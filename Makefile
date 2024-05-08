@@ -1,9 +1,9 @@
 NAME = libftprintf.a
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-INCLUDES = ./ft_printf.h
+INCLUDE = ./ft_printf.h
 
-SRCS = srcs/ft_printf.c \
+SRCS = ft_printf.c \
 
 
 OBJS = $(SRCS:.c=.o)
@@ -14,7 +14,7 @@ $(NAME): $(OBJS)
 	ar rcs $@ $^
 
 .c.o:
-	$(CC) $(CFLAGS) -I $(INCLUDES) -c $< -o $@
+	$(CC) $(CFLAGS) -I $(INCLUDE) -c $< -o $@
 
 clean:
 	rm -f $(OBJS)
