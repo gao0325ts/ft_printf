@@ -5,52 +5,51 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/03 23:28:29 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/08 00:21:36 by stakada          ###   ########.fr       */
+/*   Created: 2024/05/08 09:37:34 by stakada           #+#    #+#             */
+/*   Updated: 2024/05/09 18:54:43 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_printf_processing(char const *format, va_list args)
+int ft_printf_processing(const char *format, va_list args)
 {
-  int len;
-  int tmp;
+    int len;
+    int tmp;
 
-  len = 0;
-  while (*format)
-  {
-    if (*format == '%')
+    len = 0;
+    while (*format)
     {
-      tmp = detect_conversion(++format, args);
-      if (tmp == -1)
-        return (-1);
-      len += tmp;
-      format += tmp;
+        if (*format++ == '%')
+        {
+            tmp = detect_conversion(format, args);
+            if (tmp == -1)
+                return (-1);
+            len += tmp;
+            format += tmp;
+        }
+        while (*format != '%' && *format)
+        {
+            if (write(FD, format, 1) < 0)
+                return (-1);
+            len++;
+            format++;
+        }
     }
-    while (*format != '%' && *format)
-    {
-      write(FD, format, 1);
-      len++;
-      format++;
-    }
-  }
-  return (len);
+    return (len);
 }
 
 int ft_printf(const char *format, ...)
 {
-  va_list args;
-  int len;
+    va_list args;
+    int result;
 
-  len = 0;
-  va_start(args, format);
-  len = ft_printf_processing(format, args);
-  va_end(args);
-  return (len);
+    va_start(args, format);
+    result = ft_printf_processing(format, args);
+    va_end(args);
+    return (result);
 }
 
-// // test code
 // int main(void)
 // {
 //   ft_printf("abc");
