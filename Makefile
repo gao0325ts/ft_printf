@@ -23,13 +23,13 @@ LIBFT_NAME = libft.a
 
 all: $(NAME)
 
-.c.o:
-	$(CC) $(CFLAGS) -c $< -o $@
-
 $(NAME): $(OBJS)
 	make -C $(LIBFT_DIR)
 	cp $(LIBFT_DIR)/$(LIBFT_NAME) $(NAME)
 	ar rcs $@ $^
+
+.c.o:
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	make -C $(LIBFT_DIR) clean
