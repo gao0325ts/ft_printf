@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_hex.c                                          :+:      :+:    :+:   */
+/*   print_hex.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 21:20:34 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/09 21:37:53 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/10 15:27:01 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	put_hex_upper(unsigned long long llu)
+int	print_hex_upper(unsigned long long llu)
 {
 	int		digits;
 	char	c;
@@ -26,7 +26,7 @@ int	put_hex_upper(unsigned long long llu)
 	return (digits);
 }
 
-int	put_hex_lower(unsigned long long llu)
+int	print_hex_lower(unsigned long long llu)
 {
 	int		digits;
 	char	c;
@@ -40,24 +40,24 @@ int	put_hex_lower(unsigned long long llu)
 	return (digits);
 }
 
-int	put_hexadecimal(unsigned long long llu, int is_upper)
+int	print_hexadecimal(unsigned long long llu, int is_upper)
 {
-	int	digits;
+	int	len;
 
-	digits = 2;
+	len = 2;
 	if (is_upper)
 	{
 		if (write(FD, "0X", 2) < 0)
 			return (-1);
-		digits += put_hex_upper(llu);
+		len += put_hex_upper(llu);
 	}
 	else
 	{
 		if (write(FD, "0x", 2) < 0)
 			return (-1);
-		digits += put_hex_lower(llu);
+		len += put_hex_lower(llu);
 	}
-	return (digits);
+	return (len);
 }
 
 // #include <stdio.h>

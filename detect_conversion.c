@@ -6,27 +6,27 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 09:05:32 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/10 11:29:36 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/10 14:31:20 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	set_flags(const char **s, t_info *form_list)
+void	set_flags(const char **s, t_info *info)
 {
-	form_list->flags = 0;
+	info->flags = 0;
 	while (**s == '#' || **s == '0' || **s == '-' || **s == ' ' || **s == '+')
 	{
 		if (**s == '#')
-			form_list->flags |= FLAG_HASH;
+			info->flags |= FLAG_HASH;
 		else if (**s == '0')
-			form_list->flags |= FLAG_ZERO;
+			info->flags |= FLAG_ZERO;
 		else if (**s == '-')
-			form_list->flags |= FLAG_HYPHEN;
+			info->flags |= FLAG_HYPHEN;
 		else if (**s == ' ')
-			form_list->flags |= FLAG_SPACE;
+			info->flags |= FLAG_SPACE;
 		else
-			form_list->flags |= FLAG_PLUS;
+			info->flags |= FLAG_PLUS;
 		(*s)++;
 	}
 }
@@ -44,16 +44,16 @@ int	is_valid_flags(int flags)
 	return (0);
 }
 
-void	check_field_size(const char **s, t_info *form_list)
+void	check_field_size(const char **s, t_info *info)
 {
-	form_list->width_flag = 0;
-	form_list->width = 0;
-	form_list->precision_flag = 0;
-	form_list->precision = 0;
+	info->width_flag = 0;
+	info->width = 0;
+	info->precision_flag = 0;
+	info->precision = 0;
 	if (ft_isdigit(**s))
 	{
-		form_list->width_flag = 1;
-		form_list->width = ft_atoi(*s);
+		info->width_flag = 1;
+		info->width = ft_atoi(*s);
 		while (ft_isdigit(**s))
 			(*s)++;
 	}
@@ -62,8 +62,8 @@ void	check_field_size(const char **s, t_info *form_list)
 		(*s)++;
 		if (!ft_isdigit(**s))
 			return ;
-		form_list->precision_flag = 1;
-		form_list->precision = ft_atoi(*s);
+		info->precision_flag = 1;
+		info->precision = ft_atoi(*s);
 		while (ft_isdigit(**s))
 			(*s)++;
 	}
@@ -72,16 +72,16 @@ void	check_field_size(const char **s, t_info *form_list)
 int	detect_conversion(const char *str, va_list args)
 {
 	int		len;
-	t_info	form_list;
+	t_info	info;
 
 	len = 0;
-	set_flags(&str, &form_list);
-	if (!is_valid_flags(form_list.flags))
+	set_flags(&str, &info);
+	if (!is_valid_flags(info.flags))
 		return (-1);
-	check_field_size(&str, &form_list);
-	if (form_list.precision < 0)
+	check_field_size(&str, &info);
+	if (info.precision < 0)
 		return (-1);
-	len = print_args(str, form_list, args);
+	len = print_args(str, info, args);
 	if (len < 0)
 		return (-1);
 	return (len);

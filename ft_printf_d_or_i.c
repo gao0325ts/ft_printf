@@ -6,17 +6,30 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 21:44:12 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/10 11:27:28 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/10 15:29:06 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+void	print_symbol(int flags, int num, int *len)
+{
+	if (num < 0)
+		(*len) = write(FD, "-", 1);
+	else
+	{
+		if (flags & FLAG_PLUS)
+			(*len) = write(FD, "+", 1);
+		if (flags & FLAG_SPACE)
+			(*len) = write(FD, " ", 1);
+	}
+}
+
 int	check_digits(int num)
 {
-	int	digits;
+	int digits;
 
-	digits = 1;
+	digits = 0;
 	while (num)
 	{
 		num /= 10;
@@ -25,63 +38,93 @@ int	check_digits(int num)
 	return (digits);
 }
 
-int	put_plus_or_space(int flags, int num, int *len)
+void	put_decimal_left(t_info info, int num, int *len)
 {
-	if (flags & FLAG_PLUS && num > 0)
+	print_symbol(info.flags, num, len);
+	if (*len < 0)
+		return ;
+	while (check_digits(num) < info.precision--)
 	{
-		if (write(FD, "+", 1) < 0)
-			return (-1);
+		if (write(FD, "0", 1) < 0)
+		{
+			(*len) = -1;
+			return ;
+		}
 		(*len)++;
 	}
-	if (flags & FLAG_SPACE && num > 0)
+	print_decimal(info.precision, num, len);
+	if (*len < 0)
+		return ;
+	while (*len < info.width)
 	{
 		if (write(FD, " ", 1) < 0)
-			return (-1);
+		{
+			(*len) = -1;
+			return ;
+		}
 		(*len)++;
 	}
-	return (0);
 }
 
-int	print_decimal(int num)
+void	put_decimal_right(t_info info, int num, int *len, int output_len)
 {
-    
+	while (output_len++ < info.width)
+	{
+		if (write(FD, " ", 1) < 0)
+		{
+			(*len) = -1;
+			return ;
+		}
+	}
+	print_symbol(info.flags, num, len);
+	if (*len < 0)
+		return ;
+	while (check_digits(num) < info.precision--)
+	{
+		if (write(FD, "0", 1) < 0)
+		{
+			(*len) = -1;
+			return ;
+		}
+		(*len)++;
+	}
+	print_decimal(info.precision, num, len);
+	if (*len < 0)
+		return ;
 }
 
-int	put_decimal_left(t_info form_list, int num)
+int check_output_len(t_info info, int num)
 {
-	int	len;
-	int	digits;
+	int output_len;
 
-	len = 0;
-	digits = check_digits(num);
-	if (put_plus_or_space(form_list.flags, num, &len))
-		return (-1);
-	if (len < form_list.precision)
-		return (len);
+	output_len = 0;
+	if (num < 0 || info.flags & FLAG_PLUS || info.flags & FLAG_SPACE)
+		output_len++;
+	if (check_digits(num) < info.precision)
+		output_len += info.precision;
+	else
+		output_len += check_digits(num);
+	if (output_len < info.width)
+		output_len = info.width;
+	return (output_len);
 }
 
-int	put_decimal_right(t_info form_list, int num)
-{
-	int	len;
-
-	len = 0;
-	if (put_plus_or_space(form_list.flags, num, &len))
-		return (-1);
-	return (len);
-}
-
-int	ft_printf_d_or_i(t_info form_list, va_list args)
+int	ft_printf_d_or_i(t_info info, va_list args)
 {
 	int num;
 	int len;
+	int output_len;
 
 	num = va_arg(args, int);
 	len = 0;
-	if (form_list.flags == FLAG_HASH)
+	if (info.flags == FLAG_HASH)
 		return (-1);
-	if (form_list.flags & FLAG_HYPHEN)
-		len = put_decimal_left(form_list, num);
+	if (info.flags & FLAG_HYPHEN)
+		put_decimal_left(info, num, &len);
 	else
-		len = put_decimal_right(form_list, num);
+	{
+		output_len = check_output_len(info, num);
+		put_decimal_right(info, num, &len, output_len);
+	}
 	return (len);
 }

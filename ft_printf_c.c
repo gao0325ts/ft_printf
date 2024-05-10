@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 09:43:05 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/10 11:27:27 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/10 14:31:20 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,20 +46,20 @@ int	put_char_right(char c, int width)
 	return (len);
 }
 
-int	ft_printf_c(t_info form_list, va_list args)
+int	ft_printf_c(t_info info, va_list args)
 {
 	char	c;
 	int		len;
 
 	c = va_arg(args, char);
 	len = 0;
-	if (!(form_list.flags == FLAG_HYPHEN || form_list.flags == 0))
+	if (!(info.flags == FLAG_HYPHEN || info.flags == 0))
 		return (-1);
-	if (form_list.precision_flag)
+	if (info.precision_flag)
 		return (-1);
-	if (form_list.flags == FLAG_HYPHEN)
-		len = put_char_left(c, form_list.width);
+	if (info.flags == FLAG_HYPHEN)
+		len = put_char_left(c, info.width);
 	else
-		len = put_char_right(c, form_list.width);
+		len = put_char_right(c, info.width);
 	return (len);
 }
