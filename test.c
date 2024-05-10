@@ -1,5 +1,5 @@
-#include <stdio.h>
 #include <stdarg.h>
+#include <stdio.h>
 #include <unistd.h>
 
 //  ##   ##    ##
@@ -23,10 +23,8 @@
 //   // printf("%++d\n", 123);
 //   test_va_list("a", "b");
 //   // write(1, "%\n", 2);
-//   return 0;
+//   return (0);
 // }
-
-
 
 //    ####
 //   ##  ##
@@ -78,10 +76,8 @@
 //     tmp = printf("18.[%5c]\n", 'a');
 //     printf("18=%d\n", tmp - 6);
 
-//     return 0;
+//     return (0);
 // }
-
-
 
 //   #####
 //  ##   ##
@@ -144,10 +140,8 @@
 //     tmp = printf("19.[%-5.2s]\n", "abc");
 //     printf("19=%d\n", tmp - 6);
 
-//     return 0;
+//     return (0);
 // }
-
-
 
 //  ######
 //   ##  ##
@@ -207,10 +201,8 @@
 //     tmp = printf("20.[%p]\n", NULL);
 //     printf("20=%d\n", tmp - 6);
 
-//     return 0;
+//     return (0);
 // }
-
-
 
 //  #####
 //   ## ##
@@ -221,37 +213,36 @@
 //  #####
 
 // 対応フラグ：-, 0,  , +
-// 最小フィールド幅：OK 
-// 精度：OK 
+// 最小フィールド幅：OK
+// 精度：OK
 
-int main(void)
+int	main(void)
 {
-    int d = 123;
-    // int m = -123;
-    // int tmp;
+	int	m;
 
-    printf("1.[%d]\n", d);
-    // printf("2.[%#d]\n", d); // flag_hash
-    printf("3.[%5d]\n", d);
-    printf("4.[%-d]\n", d);
-    printf("5.[%-30d]\n", d);
-    printf("6.[%- 5d]\n", d);
-    printf("7.[%+-5d]\n", d);
-
-    printf("8.[%.d]\n", d);
-    printf("9.[%.0d]\n", d);
-    printf("10.[%5.d]\n", d);
-    printf("11.[%0.d]\n", d);
-    printf("12.[%30.5d]\n", d);
-    printf("13.[%0.0d]\n", d);
-    printf("14.[%0.5d]\n", d);
-    printf("15.[%07.5d]\n", d);
-    printf("16.[%5.0d]\n", d);
-    printf("17.[%5.6d]\n", d);
-    printf("18.[%30d]\n", d);
-    printf("19.[%-5.2d]\n", d);
-
-    return 0;
+	// int d = 123;
+	m = -123;
+	// int tmp;
+	printf("1.[%d]\n", m);
+	// printf("2.[%#d]\n", m); // flag_hash
+	printf("3.[%5d]\n", m);
+	printf("4.[%-d]\n", m);
+	printf("5.[%-10d]\n", m);
+	printf("6.[%- 2d]\n", m);
+	printf("7.[%+-2d]\n", m);
+	printf("8.[%.d]\n", m);
+	printf("9.[%.0d]\n", m);
+	printf("10.[%5.d]\n", m);
+	printf("11.[%0.d]\n", m);
+	printf("12.[%+1.2d]\n", m);
+	printf("13.[%0.0d]\n", m);
+	printf("14.[%1.2d]\n", m);
+	printf("15.[%- 10.5d]\n", m);
+	printf("16.[%5.0d]\n", m);
+	printf("17.[%5.6d]\n", m);
+	printf("18.[%5d]\n", m);
+	printf("19.[%-5.2d]\n", m);
+	return (0);
 }
 
 // int main(void)

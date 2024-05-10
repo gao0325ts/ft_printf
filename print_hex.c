@@ -12,52 +12,52 @@
 
 #include "ft_printf.h"
 
-int put_hex_upper(unsigned long long llu)
+int	put_hex_upper(unsigned long long llu)
 {
-    int digits;
-    char c;
+	int		digits;
+	char	c;
 
-    digits = 1;
-    if (llu > 15)
-        digits += put_hex_lower(llu / 16);
-    c = "0123456789ABCDEF"[llu % 16];
-    if (write(1, &c, 1) < 0)
-        return (-1);
-    return (digits);
+	digits = 1;
+	if (llu > 15)
+		digits += put_hex_lower(llu / 16);
+	c = "0123456789ABCDEF"[llu % 16];
+	if (write(1, &c, 1) < 0)
+		return (-1);
+	return (digits);
 }
 
-int put_hex_lower(unsigned long long llu)
+int	put_hex_lower(unsigned long long llu)
 {
-    int digits;
-    char c;
+	int		digits;
+	char	c;
 
-    digits = 1;
-    if (llu > 15)
-        digits += put_hex_lower(llu / 16);
-    c = "0123456789abcdef"[llu % 16];
-    if (write(1, &c, 1) < 0)
-        return (-1);
-    return (digits);
+	digits = 1;
+	if (llu > 15)
+		digits += put_hex_lower(llu / 16);
+	c = "0123456789abcdef"[llu % 16];
+	if (write(1, &c, 1) < 0)
+		return (-1);
+	return (digits);
 }
 
-int put_hexadecimal(unsigned long long llu, int is_upper)
+int	put_hexadecimal(unsigned long long llu, int is_upper)
 {
-    int digits;
+	int	digits;
 
-    digits = 2;
-    if (is_upper)
-    {
-        if (write(FD, "0X", 2) < 0)
-            return (-1);
-        digits += put_hex_upper(llu);
-    }
-    else
-    {
-        if (write(FD, "0x", 2) < 0)
-            return (-1);
-        digits += put_hex_lower(llu);
-    }
-    return (digits);
+	digits = 2;
+	if (is_upper)
+	{
+		if (write(FD, "0X", 2) < 0)
+			return (-1);
+		digits += put_hex_upper(llu);
+	}
+	else
+	{
+		if (write(FD, "0x", 2) < 0)
+			return (-1);
+		digits += put_hex_lower(llu);
+	}
+	return (digits);
 }
 
 // #include <stdio.h>

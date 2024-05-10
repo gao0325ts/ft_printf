@@ -12,13 +12,13 @@
 
 #include "ft_printf.h"
 
-int ft_printf_x(t_list form_list, va_list args, int is_upper)
+int	ft_printf_x(t_list form_list, va_list args, int is_upper)
 {
-    unsigned long long x;
-    int len;
+	unsigned long long x;
+	int len;
 
-    x = va_arg(args, unsigned long long);
-    
-    len = 0;
-    return (len);
+	x = va_arg(args, unsigned long long);
+
+	len = 0;
+	return (len);
 }

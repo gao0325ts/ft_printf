@@ -12,49 +12,49 @@
 
 #include "ft_printf.h"
 
-int put_pointer_left(unsigned long long p, int width)
-{   
-    int len;
+int	put_pointer_left(unsigned long long p, int width)
+{
+	int	len;
 
-    len = 0;
-    len += put_hexadecimal(p, 0);
-    while (len++ < width)
-        if (write(FD, " ", 1) < 0)
-            return (-1);
-    return (len);
+	len = 0;
+	len += put_hexadecimal(p, 0);
+	while (len++ < width)
+		if (write(FD, " ", 1) < 0)
+			return (-1);
+	return (len);
 }
 
-int put_pointer_right(unsigned long long p, int width)
+int	put_pointer_right(unsigned long long p, int width)
 {
-    int len;
+	int	len;
 
-    len = 1;
-    while (p)
-    {
-        p = p / 16;
-        len++;
-    }
-    while (len++ < width)
-        if (write(FD, " ", 1) < 0)
-            return (-1);
-    put_hexadecimal(p, 1);
-    return (len);
+	len = 1;
+	while (p)
+	{
+		p = p / 16;
+		len++;
+	}
+	while (len++ < width)
+		if (write(FD, " ", 1) < 0)
+			return (-1);
+	put_hexadecimal(p, 1);
+	return (len);
 }
 
-int ft_printf_p(t_list form_list, va_list args)
+int	ft_printf_p(t_list form_list, va_list args)
 {
-    unsigned long long p;
-    int len;
+	unsigned long long	p;
+	int					len;
 
-    p = va_arg(args, unsigned long long);
-    len = 0;
-    if (!(form_list.flags == FLAG_HYPHEN || form_list.flags == 0))
-        return (-1);
-    if (form_list.precision_flag)
-        return (-1);
-    if (form_list.flags == FLAG_HYPHEN)
-        len = put_pointer_left(p, form_list.precision);
-    else
-        len = put_pointer_left(p, form_list.precision);
-    return (len);
+	p = va_arg(args, unsigned long long);
+	len = 0;
+	if (!(form_list.flags == FLAG_HYPHEN || form_list.flags == 0))
+		return (-1);
+	if (form_list.precision_flag)
+		return (-1);
+	if (form_list.flags == FLAG_HYPHEN)
+		len = put_pointer_left(p, form_list.precision);
+	else
+		len = put_pointer_left(p, form_list.precision);
+	return (len);
 }
