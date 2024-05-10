@@ -62,7 +62,7 @@
 
 //     // printf("9.[%.0c]\n", 'a'); // undefined
 //     // printf("10.[%.5c]\n", 'a'); // undefined
-//     // printf("11.[%0.c]\n", 'a'); // flag_zero
+//     printf("11.[%0.5c]\n", 'a'); // flag_zero
 
 //     tmp = printf("12.[%5.c]\n", 'a');
 //     printf("12=%d\n", tmp - 6);
@@ -216,34 +216,74 @@
 // 最小フィールド幅：OK
 // 精度：OK
 
+// int	main(void)
+// {
+// 	int	m;
+
+// 	int d = 123;
+// 	m = -123;
+// 	// int tmp;
+// 	printf("1.[%d]\n", m);
+// 	// printf("2.[%#d]\n", m); // flag_hash
+// 	printf("3.[%5d]\n", m);
+// 	printf("4.[%-d]\n", m);
+// 	printf("5.[%10d]\n", m);
+// 	printf("6.[%- 2d]\n", m);
+// 	printf("7.[%+-2d]\n", m);
+// 	printf("8.[%.d]\n", m);
+// 	printf("9.[%.0d]\n", m);
+// 	printf("10.[%5.d]\n", m);
+// 	printf("11.[%0.d]\n", m);
+// 	printf("12.[%+1.2d]\n", m);
+// 	printf("13.[%0.8d]\n", d);
+// 	printf("13-2.[%0.8d]\n", m);
+// 	printf("14.[%1.4d]\n", d);
+// 	printf("14-2.[%1.4d]\n", m);
+// 	printf("15.[%+10.5d]\n", m);
+// 	printf("16.[%5.0d]\n", m);
+// 	printf("17.[%5.6d]\n", m);
+// 	printf("18.[%- 8d]\n", m);
+// 	printf("19.[%-10.5d]\n", m);
+// 	return (0);
+// }
+
+
+
+//  ##   ##
+//  ##   ##
+//  ##   ##
+//  ##   ##
+//  ##   ##
+//  ##   ##
+//   #####
+
+// 対応フラグ：-, 0
+// 最小フィールド幅：OK
+// 精度：OK
+
 int	main(void)
 {
-	int	m;
-
-	int d = 123;
-	m = -123;
+	unsigned int u = 123;
 	// int tmp;
-	printf("1.[%d]\n", m);
-	// printf("2.[%#d]\n", m); // flag_hash
-	printf("3.[%5d]\n", m);
-	printf("4.[%-d]\n", m);
-	printf("5.[%10d]\n", m);
-	printf("6.[%- 2d]\n", m);
-	printf("7.[%+-2d]\n", m);
-	printf("8.[%.d]\n", m);
-	printf("9.[%.0d]\n", m);
-	printf("10.[%5.d]\n", m);
-	printf("11.[%0.d]\n", m);
-	printf("12.[%+1.2d]\n", m);
-	printf("13.[%0.8d]\n", d);
-	printf("13-2.[%0.8d]\n", m);
-	printf("14.[%1.4d]\n", d);
-	printf("14-2.[%1.4d]\n", m);
-	printf("15.[%+10.5d]\n", m);
-	printf("16.[%5.0d]\n", m);
-	printf("17.[%5.6d]\n", m);
-	printf("18.[%- 8d]\n", m);
-	printf("19.[%-10.5d]\n", m);
+	printf("1.[%u]\n", u);
+	// printf("2.[%#u]\n", u); // flag_hash
+	printf("3.[%010u]\n", u);
+	printf("4.[%-u]\n", u);
+	printf("5.[%10u]\n", u);
+	// printf("6.[%- 2u]\n", u); // flag_space
+	printf("7.[%-10u]\n", u);
+	printf("8.[%.u]\n", u);
+	printf("9.[%.5u]\n", u);
+	printf("10.[%5.u]\n", u);
+	printf("11.[%0.u]\n", u);
+	// printf("12.[%+1.2u]\n", u); // flag_plus
+	printf("13-2.[%09.u]\n", u);
+	printf("14-2.[%1.4u]\n", u);
+	// printf("15.[%+10.5u]\n", u); // flag_plus
+	printf("16.[%5.0u]\n", u);
+	printf("17.[%5.6u]\n", u);
+	printf("18.[%-8u]\n", u);
+	printf("19.[%-10.5u]\n", u);
 	return (0);
 }
 

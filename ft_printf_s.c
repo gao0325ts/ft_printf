@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 09:43:52 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/10 14:31:20 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/10 15:59:46 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	ft_printf_s(t_info info, va_list args)
 	s = va_arg(args, char *);
 	len = 0;
 	strlen = ft_strlen(s);
-	if (!(info.flags == FLAG_HYPHEN || info.flags == 0))
+	if (!(info.flags & FLAG_HYPHEN || info.flags == 0))
 		return (-1);
 	if (info.precision < ft_strlen(s) && info.precision_flag)
 		strlen = info.precision;

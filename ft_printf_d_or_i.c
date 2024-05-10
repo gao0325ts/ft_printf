@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 21:44:12 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/10 15:29:06 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/10 16:42:38 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,6 @@ void	put_decimal_right(t_info info, int num, int *len, int output_len)
 		(*len)++;
 	}
 	print_decimal(info.precision, num, len);
-	if (*len < 0)
-		return ;
 }
 
 int check_output_len(t_info info, int num)
@@ -117,7 +115,7 @@ int	ft_printf_d_or_i(t_info info, va_list args)
 
 	num = va_arg(args, int);
 	len = 0;
-	if (info.flags == FLAG_HASH)
+	if (info.flags & FLAG_HASH)
 		return (-1);
 	if (info.flags & FLAG_HYPHEN)
 		put_decimal_left(info, num, &len);
