@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 09:43:05 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/09 22:50:21 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/10 11:27:27 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	put_char_right(char c, int width)
 	return (len);
 }
 
-int	ft_printf_c(t_list form_list, va_list args)
+int	ft_printf_c(t_info form_list, va_list args)
 {
 	char	c;
 	int		len;

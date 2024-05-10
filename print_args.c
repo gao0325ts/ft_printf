@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 09:28:04 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/09 22:48:14 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/10 11:27:35 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_printf_percent(void)
 	return (1);
 }
 
-int	print_args(char const *s, t_list form_list, va_list args)
+int	print_args(char const *s, t_info form_list, va_list args)
 {
 	int	len;
 

@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 21:44:12 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/10 10:38:16 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/10 11:27:28 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,10 @@ int	put_plus_or_space(int flags, int num, int *len)
 
 int	print_decimal(int num)
 {
+    
 }
 
-int	put_decimal_left(t_list form_list, int num)
+int	put_decimal_left(t_info form_list, int num)
 {
 	int	len;
 	int	digits;
@@ -59,7 +60,7 @@ int	put_decimal_left(t_list form_list, int num)
 		return (len);
 }
 
-int	put_decimal_right(t_list form_list, int num)
+int	put_decimal_right(t_info form_list, int num)
 {
 	int	len;
 
@@ -69,7 +70,7 @@ int	put_decimal_right(t_list form_list, int num)
 	return (len);
 }
 
-int	ft_printf_d_or_i(t_list form_list, va_list args)
+int	ft_printf_d_or_i(t_info form_list, va_list args)
 {
 	int num;
 	int len;

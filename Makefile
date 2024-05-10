@@ -3,7 +3,7 @@ NAME = libftprintf.a
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-INCLUDES = ./ft_printf.h
+RM = rm -f
 
 SRCS = ft_printf.c \
 	detect_conversion.c \
@@ -23,20 +23,21 @@ LIBFT_NAME = libft.a
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	make -C $(LIBFT_DIR) all
-	ar rcs $@ $^
-
 .c.o:
-	$(CC) $(CFLAGS) -I $(INCLUDE) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(NAME): $(OBJS)
+	make -C $(LIBFT_DIR)
+	cp $(LIBFT_DIR)/$(LIBFT_NAME) $(NAME)
+	ar rcs $@ $^
 
 clean:
 	make -C $(LIBFT_DIR) clean
-	rm -f $(OBJS)
+	$(RM) $(OBJS)
 
 fclean: clean
-	rm -f $(LIBFT_DIR)/$(LIBFT_NAME)
-	rm -f $(NAME)
+	$(RM) $(LIBFT_DIR)/$(LIBFT_NAME)
+	$(RM) $(NAME)
 
 re: fclean all
 

@@ -6,13 +6,13 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 22:34:21 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/09 22:48:24 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/10 11:27:31 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf_x(t_list form_list, va_list args, int is_upper)
+int	ft_printf_x(t_info form_list, va_list args, int is_upper)
 {
 	unsigned long long x;
 	int len;

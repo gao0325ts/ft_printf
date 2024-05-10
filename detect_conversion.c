@@ -6,13 +6,13 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 09:05:32 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/09 19:03:07 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/10 11:29:36 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	set_flags(const char **s, t_list *form_list)
+void	set_flags(const char **s, t_info *form_list)
 {
 	form_list->flags = 0;
 	while (**s == '#' || **s == '0' || **s == '-' || **s == ' ' || **s == '+')
@@ -44,7 +44,7 @@ int	is_valid_flags(int flags)
 	return (0);
 }
 
-void	check_field_size(const char **s, t_list *form_list)
+void	check_field_size(const char **s, t_info *form_list)
 {
 	form_list->width_flag = 0;
 	form_list->width = 0;
@@ -53,7 +53,7 @@ void	check_field_size(const char **s, t_list *form_list)
 	if (ft_isdigit(**s))
 	{
 		form_list->width_flag = 1;
-		form_list->width = ft_atoi(s);
+		form_list->width = ft_atoi(*s);
 		while (ft_isdigit(**s))
 			(*s)++;
 	}
@@ -72,7 +72,7 @@ void	check_field_size(const char **s, t_list *form_list)
 int	detect_conversion(const char *str, va_list args)
 {
 	int		len;
-	t_list	form_list;
+	t_info	form_list;
 
 	len = 0;
 	set_flags(&str, &form_list);

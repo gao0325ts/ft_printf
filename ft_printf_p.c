@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:23:16 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/09 21:43:55 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/10 11:27:29 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	put_pointer_right(unsigned long long p, int width)
 	return (len);
 }
 
-int	ft_printf_p(t_list form_list, va_list args)
+int	ft_printf_p(t_info form_list, va_list args)
 {
 	unsigned long long	p;
 	int					len;
