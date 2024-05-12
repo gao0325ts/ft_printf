@@ -274,7 +274,7 @@ int	main(void)
 	printf("7.[%-10u]\n", u);
 	printf("8.[%.u]\n", u);
 	printf("9.[%.5u]\n", u);
-	printf("10.[%5.u]\n", u);
+	printf("10.[%10.u]\n", u);
 	printf("11.[%0.u]\n", u);
 	// printf("12.[%+1.2u]\n", u); // flag_plus
 	printf("13-2.[%09.u]\n", u);

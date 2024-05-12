@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 09:05:32 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/10 14:31:20 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/12 15:34:29 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,11 @@ int	is_valid_flags(int flags)
 
 void	check_field_size(const char **s, t_info *info)
 {
-	info->width_flag = 0;
 	info->width = 0;
-	info->precision_flag = 0;
 	info->precision = 0;
 	if (ft_isdigit(**s))
 	{
-		info->width_flag = 1;
+		info->flags |= WIDTH_FLAG;
 		info->width = ft_atoi(*s);
 		while (ft_isdigit(**s))
 			(*s)++;
@@ -62,7 +60,7 @@ void	check_field_size(const char **s, t_info *info)
 		(*s)++;
 		if (!ft_isdigit(**s))
 			return ;
-		info->precision_flag = 1;
+		info->flags |= PRECISION_FLAG;
 		info->precision = ft_atoi(*s);
 		while (ft_isdigit(**s))
 			(*s)++;

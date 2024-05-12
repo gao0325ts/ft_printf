@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 09:28:04 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/10 14:31:20 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/12 15:30:04 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	print_args(char const *s, t_info info, va_list args)
 {
 	int	len;
 
-	len = 0;
+	len = -1;
 	if (*s == 'c')
 		len = ft_printf_c(info, args);
 	if (*s == 's')

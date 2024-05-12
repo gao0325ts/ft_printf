@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 23:26:19 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/10 14:31:20 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/12 15:32:57 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@
 # define FLAG_HYPHEN 0b0000000000000100
 # define FLAG_SPACE 0b0000000000001000
 # define FLAG_PLUS 0b0000000000010000
+# define WIDTH_FLAG 0b0000000000100000
+# define PRECISION_FLAG 0b0000000001000000
 
 typedef struct s_info
 {
 	int	flags;
-	int	width_flag;
 	int	width;
-	int	precision_flag;
 	int	precision;
 }		t_info;
 
