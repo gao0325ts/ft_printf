@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 21:44:12 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/12 17:14:10 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/12 19:04:13 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,22 @@ void	print_symbol(int flags, int num, int *len)
 		if (flags & FLAG_SPACE)
 			(*len) = write(FD, " ", 1);
 	}
+}
+
+int check_output_len(t_spec specs, int num)
+{
+	int output_len;
+
+	output_len = 0;
+	if (num < 0 || specs.flags & FLAG_PLUS || specs.flags & FLAG_SPACE)
+		output_len++;
+	if (check_digits(num) < specs.precision)
+		output_len += specs.precision;
+	else
+		output_len += check_digits(num);
+	if (output_len < specs.width)
+		output_len = specs.width;
+	return (output_len);
 }
 
 void	put_decimal_left(t_spec specs, int num, int *len)
@@ -78,27 +94,10 @@ void	put_decimal_right(t_spec specs, int num, int *len, int output_len)
 	print_decimal(specs.precision, num, len);
 }
 
-int check_output_len(t_spec specs, int num)
-{
-	int output_len;
-
-	output_len = 0;
-	if (num < 0 || specs.flags & FLAG_PLUS || specs.flags & FLAG_SPACE)
-		output_len++;
-	if (check_digits(num) < specs.precision)
-		output_len += specs.precision;
-	else
-		output_len += check_digits(num);
-	if (output_len < specs.width)
-		output_len = specs.width;
-	return (output_len);
-}
-
 int	ft_printf_d_or_i(t_spec specs, va_list args)
 {
 	int num;
 	int len;
-	int output_len;
 
 	num = va_arg(args, int);
 	len = 0;
@@ -107,9 +106,6 @@ int	ft_printf_d_or_i(t_spec specs, va_list args)
 	if (specs.flags & FLAG_HYPHEN)
 		put_decimal_left(specs, num, &len);
 	else
-	{
-		output_len = check_output_len(specs, num);
-		put_decimal_right(specs, num, &len, output_len);
-	}
+		put_decimal_right(specs, num, &len, check_output_len(specs, num));
 	return (len);
 }

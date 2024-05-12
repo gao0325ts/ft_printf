@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 10:37:49 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/10 16:03:07 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/12 17:20:49 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	print_u_decimal_processing(unsigned long long ll)
 	return (digits);
 }
 
-void print_u_decimal(unsigned int num, int *len)
+void    print_u_decimal(unsigned int num, int *len)
 {
     unsigned long long llu;
 

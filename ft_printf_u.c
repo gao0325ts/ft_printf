@@ -6,31 +6,60 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 22:25:55 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/12 17:13:55 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/12 19:26:16 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-
-
 void	put_u_decimal_left(unsigned int num, t_spec specs, int *len)
 {
 	if (specs.flags & PRECISION_FLAG)
 	{
-		print_zero_paddings(check_digits_u(num), specs, len);
+		print_zero_paddings(check_digits_u(num), specs.precision, len);
+		if (*len < 0)
+			return ;
 		print_u_decimal(num, len);
+		if (*len < 0)
+			return ;
+		print_spaces(check_digits_u(num), specs.width, len);
 	}
 	else
 	{
 		print_u_decimal(num, len);
-		print_spaces(specs, len);
+		if (*len < 0)
+			return ;
+		print_spaces(check_digits_u(num), specs, len);
 	}
 }
 
 void	put_u_decimal_right(unsigned int num, t_spec specs, int *len)
 {
-	
+	if (specs.flags & PRECISION_FLAG)
+	{
+		print_spaces(check_num_len(specs.precision, check_digits_u(num)), specs.precision, len);
+		if (*len < 0)
+			return ;
+		print_zero_paddings(check_digits_u(num), specs.width, len);
+		if (*len < 0)
+			return ;
+	}
+	else
+	{
+		if (specs.flags & FLAG_ZERO)
+		{
+			print_zero_paddings(check_digits_u(num), specs.width, len);
+			if (*len < 0)
+				return ;
+		}
+		else
+		{
+			print_spaces(check_digits_u(num), specs.width, len);
+			if (*len < 0)
+				return ;
+		}
+	}
+	print_u_decimal(num, len);
 }
 
 int	ft_printf_u(t_spec specs, va_list args)
