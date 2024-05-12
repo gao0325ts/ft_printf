@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 09:43:52 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/12 15:44:28 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/12 16:49:15 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	put_str_right(char *s, int strlen, int width)
 	return (len);
 }
 
-int	ft_printf_s(t_info info, va_list args)
+int	ft_printf_s(t_spec specs, va_list args)
 {
 	char	*s;
 	int		len;
@@ -61,13 +61,13 @@ int	ft_printf_s(t_info info, va_list args)
 	s = va_arg(args, char *);
 	len = 0;
 	strlen = ft_strlen(s);
-	if (!(info.flags & FLAG_HYPHEN || info.flags == 0))
+	if (!(specs.flags & FLAG_HYPHEN || specs.flags == 0))
 		return (-1);
-	if (info.precision < ft_strlen(s) && info.flags & PRECISION_FLAG)
-		strlen = info.precision;
-	if (info.flags == FLAG_HYPHEN)
-		len = put_str_left(s, strlen, info.width - strlen);
+	if (specs.precision < ft_strlen(s) && specs.flags & PRECISION_FLAG)
+		strlen = specs.precision;
+	if (specs.flags == FLAG_HYPHEN)
+		len = put_str_left(s, strlen, specs.width - strlen);
 	else
-		len = put_str_right(s, strlen, info.width - strlen);
+		len = put_str_right(s, strlen, specs.width - strlen);
 	return (len);
 }

@@ -1,24 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_x.c                                      :+:      :+:    :+:   */
+/*   print_zero_or_space.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/09 22:34:21 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/12 16:49:15 by stakada          ###   ########.fr       */
+/*   Created: 2024/05/12 16:43:57 by stakada           #+#    #+#             */
+/*   Updated: 2024/05/12 16:44:05 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf_x(t_spec specs, va_list args, int is_upper)
-{
-	unsigned long long x;
-	int len;
-
-	x = va_arg(args, unsigned long long);
-	len = 0;
-	
-	return (len);
-}

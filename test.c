@@ -265,25 +265,25 @@ int	main(void)
 {
 	unsigned int u = 123;
 	// int tmp;
-	printf("1.[%u]\n", u);
-	// printf("2.[%#u]\n", u); // flag_hash
-	printf("3.[%010u]\n", u);
-	printf("4.[%-u]\n", u);
-	printf("5.[%10u]\n", u);
-	// printf("6.[%- 2u]\n", u); // flag_space
-	printf("7.[%-10u]\n", u);
-	printf("8.[%.u]\n", u);
-	printf("9.[%.5u]\n", u);
-	printf("10.[%10.u]\n", u);
-	printf("11.[%0.u]\n", u);
-	// printf("12.[%+1.2u]\n", u); // flag_plus
-	printf("13-2.[%09.u]\n", u);
-	printf("14-2.[%1.4u]\n", u);
-	// printf("15.[%+10.5u]\n", u); // flag_plus
-	printf("16.[%5.0u]\n", u);
-	printf("17.[%5.6u]\n", u);
-	printf("18.[%-8u]\n", u);
-	printf("19.[%-10.5u]\n", u);
+	printf("a.[%u]\n", u);
+	// printf("b.[%#u]\n", u); // flag_hash
+	printf("c.[%010u]\n", u);
+	printf("d.[%-u]\n", u);
+	printf("e.[%10u]\n", u);
+	// printf("f.[%- 2u]\n", u); // flag_space
+	printf("g.[%10.5u]\n", u);
+	printf("h.[%.u]\n", u);
+	printf("i.[%0.10u]\n", u);
+	printf("j.[%10.0u]\n", u);
+	printf("k.[%0.u]\n", u);
+	// printf("l.[%+1.2u]\n", u); // flag_plus
+	printf("m.[%09u]\n", u);
+	printf("n.[%1.4u]\n", u);
+	// printf("o.[%+10.5u]\n", u); // flag_plus
+	printf("p.[%5.0u]\n", u);
+	printf("q.[%5.6u]\n", u);
+	printf("r.[%-8u]\n", u);
+	printf("s.[%-10.5u]\n", u);
 	return (0);
 }
 

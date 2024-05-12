@@ -6,27 +6,27 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 09:05:32 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/12 15:34:29 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/12 16:49:15 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	set_flags(const char **s, t_info *info)
+void	set_flags(const char **s, t_spec *specs)
 {
-	info->flags = 0;
+	specs->flags = 0;
 	while (**s == '#' || **s == '0' || **s == '-' || **s == ' ' || **s == '+')
 	{
 		if (**s == '#')
-			info->flags |= FLAG_HASH;
+			specs->flags |= FLAG_HASH;
 		else if (**s == '0')
-			info->flags |= FLAG_ZERO;
+			specs->flags |= FLAG_ZERO;
 		else if (**s == '-')
-			info->flags |= FLAG_HYPHEN;
+			specs->flags |= FLAG_HYPHEN;
 		else if (**s == ' ')
-			info->flags |= FLAG_SPACE;
+			specs->flags |= FLAG_SPACE;
 		else
-			info->flags |= FLAG_PLUS;
+			specs->flags |= FLAG_PLUS;
 		(*s)++;
 	}
 }
@@ -44,14 +44,14 @@ int	is_valid_flags(int flags)
 	return (0);
 }
 
-void	check_field_size(const char **s, t_info *info)
+void	check_field_size(const char **s, t_spec *specs)
 {
-	info->width = 0;
-	info->precision = 0;
+	specs->width = 0;
+	specs->precision = 0;
 	if (ft_isdigit(**s))
 	{
-		info->flags |= WIDTH_FLAG;
-		info->width = ft_atoi(*s);
+		// specs->flags |= WIDTH_FLAG;
+		specs->width = ft_atoi(*s);
 		while (ft_isdigit(**s))
 			(*s)++;
 	}
@@ -60,8 +60,8 @@ void	check_field_size(const char **s, t_info *info)
 		(*s)++;
 		if (!ft_isdigit(**s))
 			return ;
-		info->flags |= PRECISION_FLAG;
-		info->precision = ft_atoi(*s);
+		specs->flags |= PRECISION_FLAG;
+		specs->precision = ft_atoi(*s);
 		while (ft_isdigit(**s))
 			(*s)++;
 	}
@@ -70,16 +70,16 @@ void	check_field_size(const char **s, t_info *info)
 int	detect_conversion(const char *str, va_list args)
 {
 	int		len;
-	t_info	info;
+	t_spec	specs;
 
 	len = 0;
-	set_flags(&str, &info);
-	if (!is_valid_flags(info.flags))
+	set_flags(&str, &specs);
+	if (!is_valid_flags(specs.flags))
 		return (-1);
-	check_field_size(&str, &info);
-	if (info.precision < 0)
+	check_field_size(&str, &specs);
+	if (specs.precision < 0)
 		return (-1);
-	len = print_args(str, info, args);
+	len = print_args(str, specs, args);
 	if (len < 0)
 		return (-1);
 	return (len);
