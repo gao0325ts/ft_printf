@@ -6,39 +6,46 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:23:16 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/12 19:05:25 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/12 19:59:59 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	put_pointer_left(unsigned long long p, int width)
+void	put_pointer_left(unsigned long long p, t_spec specs, int *len)
 {
-	int	len;
-
-	len = 0;
-	len += put_hexadecimal(p, 0);
-	while (len++ < width)
+	put_hexadecimal(p, specs, len);
+	if (*len < 0)
+		return ;
+	while (*len < specs.width)
+	{
 		if (write(FD, " ", 1) < 0)
-			return (-1);
-	return (len);
+		{
+			(*len) = -1;
+			return ;
+		}
+		(*len)++;
+	}
 }
 
-int	put_pointer_right(unsigned long long p, int width)
+void	put_pointer_right(unsigned long long p, t_spec specs, int *len)
 {
-	int	len;
-
-	len = 1;
+	(*len)++;
 	while (p)
 	{
 		p = p / 16;
-		len++;
+		(*len)++;
 	}
-	while (len++ < width)
+	while (*len < specs.width)
+	{
 		if (write(FD, " ", 1) < 0)
-			return (-1);
-	put_hexadecimal(p, 1);
-	return (len);
+		{
+			(*len) = -1;
+			return ;
+		}
+		(*len)++;
+	}
+	put_hexadecimal(p, specs, len);
 }
 
 int	ft_printf_p(t_spec specs, va_list args)
@@ -53,8 +60,8 @@ int	ft_printf_p(t_spec specs, va_list args)
 	if (specs.flags & PRECISION_FLAG)
 		return (-1);
 	if (specs.flags & FLAG_HYPHEN)
-		len = put_pointer_left(p, specs.precision);
+		put_pointer_left(p, specs, &len);
 	else
-		len = put_pointer_left(p, specs.precision);
+		put_pointer_left(p, specs, &len);
 	return (len);
 }

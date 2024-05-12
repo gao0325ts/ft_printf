@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 21:44:12 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/12 19:04:13 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/12 19:46:17 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int check_output_len(t_spec specs, int num)
 	return (output_len);
 }
 
-void	put_decimal_left(t_spec specs, int num, int *len)
+void	put_dec_left(t_spec specs, int num, int *len)
 {
 	print_symbol(specs.flags, num, len);
 	if (*len < 0)
@@ -69,7 +69,7 @@ void	put_decimal_left(t_spec specs, int num, int *len)
 	}
 }
 
-void	put_decimal_right(t_spec specs, int num, int *len, int output_len)
+void	put_dec_right(t_spec specs, int num, int *len, int output_len)
 {
 	while (output_len++ < specs.width)
 	{
@@ -104,8 +104,8 @@ int	ft_printf_d_or_i(t_spec specs, va_list args)
 	if (specs.flags & FLAG_HASH)
 		return (-1);
 	if (specs.flags & FLAG_HYPHEN)
-		put_decimal_left(specs, num, &len);
+		put_dec_left(specs, num, &len);
 	else
-		put_decimal_right(specs, num, &len, check_output_len(specs, num));
+		put_dec_right(specs, num, &len, check_output_len(specs, num));
 	return (len);
 }

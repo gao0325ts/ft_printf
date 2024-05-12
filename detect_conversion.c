@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 09:05:32 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/12 16:49:15 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/12 19:43:53 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,5 @@ int	detect_conversion(const char *str, va_list args)
 	check_field_size(&str, &specs);
 	if (specs.precision < 0)
 		return (-1);
-	len = print_args(str, specs, args);
-	if (len < 0)
-		return (-1);
-	return (len);
+	return (print_args(str, &specs, args));
 }

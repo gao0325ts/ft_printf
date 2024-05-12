@@ -261,29 +261,69 @@
 // 最小フィールド幅：OK
 // 精度：OK
 
+// int	main(void)
+// {
+// 	unsigned int u = 123;
+// 	// int tmp;
+// 	printf("a.[%u]\n", u);
+// 	// printf("b.[%#u]\n", u); // flag_hash
+// 	printf("c.[%010u]\n", u);
+// 	printf("d.[%-u]\n", u);
+// 	printf("e.[%10u]\n", u);
+// 	// printf("f.[%- 2u]\n", u); // flag_space
+// 	printf("g.[%10.5u]\n", u);
+// 	printf("h.[%.u]\n", u);
+// 	printf("i.[%0.10u]\n", u);
+// 	printf("j.[%10.0u]\n", u);
+// 	printf("k.[%0.u]\n", u);
+// 	// printf("l.[%+1.2u]\n", u); // flag_plus
+// 	printf("m.[%09u]\n", u);
+// 	printf("n.[%1.4u]\n", u);
+// 	// printf("o.[%+10.5u]\n", u); // flag_plus
+// 	printf("p.[%5.0u]\n", u);
+// 	printf("q.[%5.6u]\n", u);
+// 	printf("r.[%-8u]\n", u);
+// 	printf("s.[%-10.5u]\n", u);
+// 	return (0);
+// }
+
+
+
+//  ##  ##
+//  ##  ##
+//   ####
+//    ##
+//   ####
+//  ##  ##
+//  ##  ##
+
+// 対応フラグ：#, -, 0
+// 最小フィールド幅：OK
+// 精度：OK
+
 int	main(void)
 {
-	unsigned int u = 123;
+	int x = 255;
 	// int tmp;
-	printf("a.[%u]\n", u);
-	// printf("b.[%#u]\n", u); // flag_hash
-	printf("c.[%010u]\n", u);
-	printf("d.[%-u]\n", u);
-	printf("e.[%10u]\n", u);
-	// printf("f.[%- 2u]\n", u); // flag_space
-	printf("g.[%10.5u]\n", u);
-	printf("h.[%.u]\n", u);
-	printf("i.[%0.10u]\n", u);
-	printf("j.[%10.0u]\n", u);
-	printf("k.[%0.u]\n", u);
-	// printf("l.[%+1.2u]\n", u); // flag_plus
-	printf("m.[%09u]\n", u);
-	printf("n.[%1.4u]\n", u);
-	// printf("o.[%+10.5u]\n", u); // flag_plus
-	printf("p.[%5.0u]\n", u);
-	printf("q.[%5.6u]\n", u);
-	printf("r.[%-8u]\n", u);
-	printf("s.[%-10.5u]\n", u);
+	printf("a.[%x]\n", x);
+	printf("b.[%#x]\n", x); // flag_hash
+	printf("c.[%#010x]\n", x);
+	printf("d.[%x]\n", x);
+	printf("e.[%-10x]\n", x);
+	// printf("f.[%- 2x]\n", x); // flag_space
+	printf("g.[%10.5x]\n", x);
+	printf("h.[%.x]\n", x);
+	printf("i.[%0.10x]\n", x);
+	printf("j.[%10.0x]\n", x);
+	printf("k.[%0.x]\n", x);
+	// printf("l.[%+1.2x]\n", x); // flag_plus
+	printf("m.[%09x]\n", x);
+	printf("n.[%1.4x]\n", x);
+	// printf("o.[%+10.5x]\n", x); // flag_plus
+	printf("p.[%5.0x]\n", x);
+	printf("q.[%5.6x]\n", x);
+	printf("r.[%-8x]\n", x);
+	printf("s.[%-10.5x]\n", x);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 21:20:34 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/10 15:27:01 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/12 19:55:44 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,24 +40,28 @@ int	print_hex_lower(unsigned long long llu)
 	return (digits);
 }
 
-int	print_hexadecimal(unsigned long long llu, int is_upper)
+void	print_hexadecimal(unsigned long long llu, t_spec specs, int *len)
 {
-	int	len;
-
-	len = 2;
-	if (is_upper)
+	if (specs.flags & IS_X_UPPER)
 	{
-		if (write(FD, "0X", 2) < 0)
-			return (-1);
-		len += put_hex_upper(llu);
+		if (specs.flags & FLAG_HASH)
+		{
+			if (write(FD, "0X", 2) < 0)
+				return (-1);
+			(*len) += 2;
+		}
+		(*len) += put_hex_upper(llu);
 	}
 	else
 	{
-		if (write(FD, "0x", 2) < 0)
-			return (-1);
-		len += put_hex_lower(llu);
+		if (specs.flags & FLAG_HASH)
+		{
+			if (write(FD, "0x", 2) < 0)
+				return (-1);
+			(*len) += 2;
+		}
+		(*len) += put_hex_lower(llu);
 	}
-	return (len);
 }
 
 // #include <stdio.h>

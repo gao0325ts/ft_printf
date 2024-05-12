@@ -6,13 +6,13 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 22:25:55 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/12 19:26:16 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/12 19:46:06 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	put_u_decimal_left(unsigned int num, t_spec specs, int *len)
+void	put_u_dec_left(unsigned int num, t_spec specs, int *len)
 {
 	if (specs.flags & PRECISION_FLAG)
 	{
@@ -33,7 +33,7 @@ void	put_u_decimal_left(unsigned int num, t_spec specs, int *len)
 	}
 }
 
-void	put_u_decimal_right(unsigned int num, t_spec specs, int *len)
+void	put_u_dec_right(unsigned int num, t_spec specs, int *len)
 {
 	if (specs.flags & PRECISION_FLAG)
 	{
@@ -72,8 +72,8 @@ int	ft_printf_u(t_spec specs, va_list args)
 	if (!(specs.flags & FLAG_HYPHEN || specs.flags & FLAG_ZERO || specs.flags == 0))
 		return (-1);
 	if (specs.flags & FLAG_HYPHEN)
-		put_u_decimal_left(u, specs, &len);
+		put_u_dec_left(u, specs, &len);
 	else
-		put_u_decimal_right(u, specs, &len);
+		put_u_dec_right(u, specs, &len);
 	return (len);
 }
