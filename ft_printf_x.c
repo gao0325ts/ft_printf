@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 22:34:21 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/12 19:48:26 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/13 08:53:06 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	put_hex_left(unsigned long long num, t_spec specs, int *len)
 {
-	
+	print_zero_paddings(check_digits_hex(num, specs.precision), specs.precision, len);
 }
 
 void	put_hex_right(unsigned long long num, t_spec specs, int *len)

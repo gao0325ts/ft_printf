@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 17:13:38 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/12 20:24:21 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/13 08:52:41 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,13 @@ int check_digits_u(unsigned int num)
 	return (digits);
 }
 
-int check_digits_hex(unsigned long long num)
+int check_digits_hex(unsigned long long num, int prec_flag)
 {
     int digits;
 
     digits = 0;
+	if (prec_flag)
+		digits += 2;
     while(num)
     {
         num /= 16;

@@ -306,15 +306,15 @@ int	main(void)
 	int x = 255;
 	// int tmp;
 	printf("a.[%x]\n", x);
-	printf("b.[%#x]\n", x); // flag_hash
-	printf("c.[%-#6x]\n", x);
-	printf("d.[%#010x]\n", x);
-	printf("e.[%-10x]\n", x);
+	printf("b.[%#08x]\n", x);
+	printf("c.[%#1x]\n", x);
+	printf("d.[%#08x]\n", x);
+	printf("e.[%8x]\n", x);
 	// printf("f.[%- 2x]\n", x); // flag_space
-	printf("g.[%-10.5x]\n", x);
+	printf("g.[%-8.5x]\n", x);
 	printf("h.[%.x]\n", x);
-	printf("i.[%0.10x]\n", x);
-	printf("j.[%10.0x]\n", x);
+	printf("i.[%0.8x]\n", x);
+	printf("j.[%8.0x]\n", x);
 	printf("k.[%0.x]\n", x);
 	// printf("l.[%+1.2x]\n", x); // flag_plus
 	printf("m.[%09x]\n", x);

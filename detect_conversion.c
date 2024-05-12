@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 09:05:32 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/12 20:30:19 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/13 08:52:06 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	check_field_size(const char **s, t_spec *specs)
 		(*s)++;
 		if (!ft_isdigit(**s))
 			return ;
-		specs->flags |= PRECISION_FLAG;
+		specs->flags |= PREC_FLAG;
 		specs->precision = ft_atoi(*s);
 		while (ft_isdigit(**s))
 			(*s)++;

@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 22:25:55 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/12 19:46:06 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/13 08:52:06 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	put_u_dec_left(unsigned int num, t_spec specs, int *len)
 {
-	if (specs.flags & PRECISION_FLAG)
+	if (specs.flags & PREC_FLAG)
 	{
 		print_zero_paddings(check_digits_u(num), specs.precision, len);
 		if (*len < 0)
@@ -35,7 +35,7 @@ void	put_u_dec_left(unsigned int num, t_spec specs, int *len)
 
 void	put_u_dec_right(unsigned int num, t_spec specs, int *len)
 {
-	if (specs.flags & PRECISION_FLAG)
+	if (specs.flags & PREC_FLAG)
 	{
 		print_spaces(check_num_len(specs.precision, check_digits_u(num)), specs.precision, len);
 		if (*len < 0)
