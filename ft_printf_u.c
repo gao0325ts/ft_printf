@@ -6,18 +6,29 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 22:25:55 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/12 16:49:15 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/12 17:13:55 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	put_u_decimal_left(int num, t_spec specs)
+
+
+void	put_u_decimal_left(unsigned int num, t_spec specs, int *len)
 {
-	
+	if (specs.flags & PRECISION_FLAG)
+	{
+		print_zero_paddings(check_digits_u(num), specs, len);
+		print_u_decimal(num, len);
+	}
+	else
+	{
+		print_u_decimal(num, len);
+		print_spaces(specs, len);
+	}
 }
 
-void	put_u_decimal_right(int num, t_spec specs)
+void	put_u_decimal_right(unsigned int num, t_spec specs, int *len)
 {
 	
 }
@@ -32,8 +43,8 @@ int	ft_printf_u(t_spec specs, va_list args)
 	if (!(specs.flags & FLAG_HYPHEN || specs.flags & FLAG_ZERO || specs.flags == 0))
 		return (-1);
 	if (specs.flags & FLAG_HYPHEN)
-		put_u_decimal_left(u, specs);
+		put_u_decimal_left(u, specs, &len);
 	else
-		put_u_decimal_right(u, specs);
+		put_u_decimal_right(u, specs, &len);
 	return (len);
 }

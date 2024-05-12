@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 21:44:12 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/12 16:49:15 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/12 17:14:10 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,6 @@ void	print_symbol(int flags, int num, int *len)
 		if (flags & FLAG_SPACE)
 			(*len) = write(FD, " ", 1);
 	}
-}
-
-int	check_digits(int num)
-{
-	int digits;
-
-	digits = 0;
-	while (num)
-	{
-		num /= 10;
-		digits++;
-	}
-	return (digits);
 }
 
 void	put_decimal_left(t_spec specs, int num, int *len)
