@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 17:13:38 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/12 19:26:12 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/12 20:24:21 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,19 @@ int check_digits_u(unsigned int num)
 		digits++;
 	}
 	return (digits);
+}
+
+int check_digits_hex(unsigned long long num)
+{
+    int digits;
+
+    digits = 0;
+    while(num)
+    {
+        num /= 16;
+        digits++;
+    }
+    return (digits);
 }
 
 int	check_num_len(int precision, int digits)
