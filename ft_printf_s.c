@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 09:43:52 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/13 13:27:24 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/13 14:43:11 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	put_str_left(char *s, t_spec specs, int *len, int strlen)
 {
 	if (!s)
 	{
-		print_null(strlen, len);
+		print_null(len, strlen);
 		if (*len < 0)
 			return ;
 	}
@@ -49,7 +49,7 @@ void	put_str_right(char *s, t_spec specs, int *len, int strlen)
 		return ;
 	if (!s)
 	{
-		print_null(strlen, len);
+		print_null(len, strlen);
 		if (*len < 0)
 			return ;
 	}
@@ -67,13 +67,16 @@ void	put_str_right(char *s, t_spec specs, int *len, int strlen)
 	}
 }
 
-void	print_null(int max_len, int *len)
+void	print_null(int *len, int strlen)
 {
-	char null_str[7] = "(null)";
-	char *str = &null_str;
-	while (max_len--)
+	char	str[7];
+	int 	i;
+
+	i = 0;
+	ft_strlcpy(str, "(null)", 7);
+	while (strlen--)
 	{
-		if (write(FD, str++, 1) < 0)
+		if (write(FD, &str[i++], 1) < 0)
 		{
 			(*len) = -1;
 			return ;
@@ -92,8 +95,6 @@ int	ft_printf_s(t_spec specs, va_list args)
 	len = 0;
 	if (!(specs.flags & FLAG_HYPHEN || specs.flags == 0))
 		return (-1);
-	if (!s)
-		print_null(&len);
 	strlen = count_strlen(s);
 	if (specs.flags & PREC_FLAG && specs.precision < strlen)
 		strlen = specs.precision;

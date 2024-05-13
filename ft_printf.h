@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 23:26:19 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/13 13:31:06 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/13 14:38:52 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@
 typedef struct s_spec
 {
 	int		flags;
-	size_t	width;
-	size_t	precision;
+	int		width;
+	int		precision;
 }			t_spec;
 
 int			ft_printf(const char *format, ...);
@@ -43,13 +43,13 @@ int			is_valid_flags(int flags);
 void		check_field_size(const char **s, t_spec *specs);
 int			ft_printf_dispatcher(char const *s, t_spec specs, va_list args);
 int			ft_printf_c(t_spec specs, va_list args);
-int			put_char_left(int c, t_spec specs, int *len);
-int			put_char_right(int c, t_spec specs, int *len);
+void		put_char_left(int c, t_spec specs, int *len);
+void		put_char_right(int c, t_spec specs, int *len);
 int			ft_printf_s(t_spec specs, va_list args);
 int			count_strlen(char *s);
 void		put_str_left(char *s, t_spec specs, int *len, int strlen);
 void		put_str_right(char *s, t_spec specs, int *len, int strlen);
-void		print_null(int max_len, int *len);
+void		print_null(int *len, int strlen);
 int			ft_printf_p(t_spec specs, va_list args);
 void		put_pointer_left(unsigned long long p, t_spec specs, int *len);
 void		put_pointer_right(unsigned long long p, t_spec specs, int *len);

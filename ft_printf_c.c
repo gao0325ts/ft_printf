@@ -6,13 +6,13 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 09:43:05 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/13 12:17:02 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/13 14:34:05 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	put_char_left(int c, t_spec specs, int *len)
+void	put_char_left(int c, t_spec specs, int *len)
 {
 	if (write(FD, &c, 1) < 0)
 	{
@@ -23,7 +23,7 @@ int	put_char_left(int c, t_spec specs, int *len)
 	print_spaces(1, specs.width, len);
 }
 
-int	put_char_right(int c, t_spec specs, int *len)
+void	put_char_right(int c, t_spec specs, int *len)
 {
 	print_spaces(1, specs.width, len);
 	if (*len < 0)
