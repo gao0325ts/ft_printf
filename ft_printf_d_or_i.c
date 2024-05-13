@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 21:44:12 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/13 21:49:16 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/13 22:14:25 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,49 +33,48 @@ void	put_dec_left(t_spec specs, int num, int *len)
 	print_zero_paddings(count_digits(num), specs.precision, len);
 	if (*len < 0)
 		return ;
-	print_decimal(specs.precision, num, len);
+	print_decimal(num, len);
 	if (*len < 0)
 		return ;
 	print_spaces(*len, specs.width, len);
 }
 
-void	put_dec_right_2(t_spec specs, int num, int *len, int output_len)
+void	put_dec_right_1(t_spec specs, int num, int *len)
 {
 	int digits;
-	
+
 	digits = count_digits(num);
-	if (specs.flags & PREC_FLAG)
+	print_spaces(digits, count_padded_len(specs, digits), len);
+	if (*len < 0)
+		return ;
+	print_symbol(specs.flags, num, len);
+	if (*len < 0)
+		return ;
+	print_zero_paddings(digits, specs.precision, len);
+	if (*len < 0)
+		return ;
+	print_decimal(num, len);
+}
+
+void	put_dec_right_2(t_spec specs, int num, int *len)
+{
+	if (specs.flags & FLAG_ZERO)
 	{
-		print_spaces(digits, count_padded_len(specs, digits), len, specs);
+		print_symbol(specs.flags, num, len);
 		if (*len < 0)
 			return ;
-		print_symbol(specs.flags, num, len);
-		
+		print_zero_paddings(count_padded_len(specs, count_digits(num)), specs.width, len);
 	}
 	else
 	{
-		while (output_len++ < specs.width)
-		{
-			if (write(FD, " ", 1) < 0)
-			{
-				(*len) = -1;
-				return ;
-			}
-		}
-		print_symbol(specs.flags, num, len);
+		print_spaces(count_padded_len(specs, count_digits(num)), specs.width, len);
 		if (*len < 0)
 			return ;
-		while (count_digits(num) < specs.precision--)
-		{
-			if (write(FD, "0", 1) < 0)
-			{
-				(*len) = -1;
-				return ;
-			}
-			(*len)++;
-		}
+		print_symbol(specs.flags, num, len);
 	}
-	print_decimal(specs.precision, num, len);
+	if (*len < 0)
+		return ;
+	print_decimal(num, len);
 }
 
 int	ft_printf_d_or_i(t_spec specs, va_list args)
@@ -89,9 +88,9 @@ int	ft_printf_d_or_i(t_spec specs, va_list args)
 		return (-1);
 	if (specs.flags & FLAG_HYPHEN)
 		put_dec_left(specs, num, &len);
-	else if (specs.flags & FLAG_ZERO)
+	else if (specs.flags & PREC_FLAG)
 		put_dec_right_1(specs, num, &len);
 	else
-		put_dec_right_2(specs, num, &len, check_output_len(specs, num));
+		put_dec_right_2(specs, num, &len);
 	return (len);
 }

@@ -7,7 +7,7 @@ int	main(void)
 	// int tmp;
 	printf("1.[%d]\n", m);
 	// printf("2.[%#d]\n", m); // flag_hash
-	printf("3.[%5d]\n", m);
+	printf("3.[%2d]\n", m);
 	printf("4.[%-d]\n", m);
 	printf("5.[%0.10d]\n", m);
 	printf("6.[%- 2d]\n", m);
