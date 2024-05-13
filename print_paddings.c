@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 16:43:57 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/13 21:50:02 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/13 22:22:50 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	print_spaces(int digits, int max_len, int *len)
 	}
 }
 
-void	print_zero_paddings(int digits, int max_len, int flags, int *len)
+void	print_zero_paddings(int digits, int max_len, int *len)
 {
 	while (digits++ < max_len)
 	{

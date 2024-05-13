@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 22:25:55 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/13 22:19:47 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/13 22:26:54 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	put_u_dec_right(unsigned int num, t_spec specs, int *len)
 {
 	if (specs.flags & PREC_FLAG)
 	{
-		print_spaces(count_padded_len(specs, count_digits_u(num)),
+		print_spaces(count_padded_len(specs, count_digits_u(num), 0),
 			specs.precision, len);
 		if (*len < 0)
 			return ;

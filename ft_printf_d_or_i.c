@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 21:44:12 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/13 22:14:25 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/13 22:26:37 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	put_dec_right_1(t_spec specs, int num, int *len)
 	int digits;
 
 	digits = count_digits(num);
-	print_spaces(digits, count_padded_len(specs, digits), len);
+	print_spaces(digits, count_padded_len(specs, digits, num < 0), len);
 	if (*len < 0)
 		return ;
 	print_symbol(specs.flags, num, len);
@@ -63,11 +63,11 @@ void	put_dec_right_2(t_spec specs, int num, int *len)
 		print_symbol(specs.flags, num, len);
 		if (*len < 0)
 			return ;
-		print_zero_paddings(count_padded_len(specs, count_digits(num)), specs.width, len);
+		print_zero_paddings(count_padded_len(specs, count_digits(num), num < 0), specs.width, len);
 	}
 	else
 	{
-		print_spaces(count_padded_len(specs, count_digits(num)), specs.width, len);
+		print_spaces(count_padded_len(specs, count_digits(num), num < 0), specs.width, len);
 		if (*len < 0)
 			return ;
 		print_symbol(specs.flags, num, len);

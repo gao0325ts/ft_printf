@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 23:26:19 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/13 22:18:21 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/13 22:26:13 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ void		put_pointer_left(unsigned long long p, t_spec specs, int *len);
 void		put_pointer_right(unsigned long long p, t_spec specs, int *len);
 int			ft_printf_d_or_i(t_spec specs, va_list args);
 void		print_symbol(int flags, int num, int *len);
-int			count_padded_len(t_spec specs, int digits);
 void		put_dec_left(t_spec specs, int num, int *len);
 void		put_dec_right(t_spec specs, int num, int *len, int output_len);
 int			ft_printf_u(t_spec specs, va_list args);
@@ -78,6 +77,6 @@ void		print_zero_paddings(int digits, int max_len, int *len);
 int			count_digits(int num);
 int			count_digits_u(unsigned int num);
 int			count_digits_hex(unsigned long long num);
-int			count_padded_len(t_spec specs, int digits);
+int			count_padded_len(t_spec specs, int digits, int is_minus);
 
 #endif

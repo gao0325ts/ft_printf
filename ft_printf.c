@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 09:37:34 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/13 12:38:36 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/13 22:27:54 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	ft_printf(const char *format, ...)
 	return (result);
 }
 
-// int main(void)
-// {
-//   ft_printf("abc");
-// }
+int main(void)
+{
+	ft_printf("abc");
+}

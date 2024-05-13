@@ -17,7 +17,8 @@ SRCS = ft_printf.c \
 	print_dec.c \
 	print_hex.c \
 	print_paddings.c \
-	count_digits.c
+	count_digits.c	\
+	count_len.c
 
 OBJS = $(SRCS:.c=.o)
 
