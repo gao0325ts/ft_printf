@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 17:13:38 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/13 13:22:13 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/13 13:30:00 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ size_t	count_digits_hex(unsigned long long num)
 	return (digits);
 }
 
-size_t	count_padded_digits(t_spec specs, int digits)
+size_t	count_padded_len(t_spec specs, int digits)
 {
 	size_t	p_digits;
 

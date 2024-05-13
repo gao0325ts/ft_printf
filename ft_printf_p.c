@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:23:16 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/13 13:07:20 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/13 13:30:00 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	put_pointer_left(unsigned long long p, t_spec specs, int *len)
 
 void	put_pointer_right(unsigned long long p, t_spec specs, int *len)
 {
-	print_spaces(count_padded_digits(specs, count_digits_hex(p)),
+	print_spaces(count_padded_len(specs, count_digits_hex(p)),
 		specs.width, len);
 	if (*len < 0)
 		return ;

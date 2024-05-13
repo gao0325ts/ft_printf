@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 22:34:21 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/13 10:18:42 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/13 13:30:00 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	put_hex_left(unsigned long long num, t_spec specs, int *len)
 
 void	put_hex_right_1(unsigned long long num, t_spec specs, int *len)
 {
-	print_spaces(count_padded_digits(specs, count_digits_hex(num)), specs.width,
+	print_spaces(count_padded_len(specs, count_digits_hex(num)), specs.width,
 		len);
 	if (*len < 0)
 		return ;
