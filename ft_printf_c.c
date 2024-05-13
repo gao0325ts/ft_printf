@@ -43,7 +43,8 @@ int	ft_printf_c(t_spec specs, va_list args)
 
 	c = va_arg(args, int);
 	len = 0;
-	if (!(specs.flags & FLAG_HYPHEN || specs.flags == 0) || specs.flags & PREC_FLAG)
+	if (!(specs.flags & FLAG_HYPHEN || specs.flags == 0)
+		|| specs.flags & PREC_FLAG)
 		return (-1);
 	if (specs.flags & FLAG_HYPHEN)
 		put_char_left(c, specs, &len);

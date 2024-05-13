@@ -19,7 +19,7 @@ int	count_padded_len(t_spec specs, int digits, int is_minus)
 	pd_len = 0;
 	if (specs.flags & FLAG_HASH)
 		pd_len = 2;
-    if (is_minus || specs.flags & FLAG_PLUS || specs.flags & FLAG_SPACE)
+	if (is_minus || specs.flags & FLAG_PLUS || specs.flags & FLAG_SPACE)
 		pd_len++;
 	if (digits < specs.precision)
 		pd_len += specs.precision;

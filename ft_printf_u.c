@@ -52,7 +52,7 @@ void	put_u_dec_right(unsigned int num, t_spec specs, int *len)
 		else
 			print_spaces(count_digits_u(num), specs.width, len);
 		if (*len < 0)
-		return ;
+			return ;
 	}
 	print_u_decimal(num, len);
 }

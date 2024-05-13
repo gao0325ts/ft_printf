@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int count_strlen(char *s)
+int	count_strlen(char *s)
 {
 	if (!s)
 		return (6);
@@ -70,7 +70,7 @@ void	put_str_right(char *s, t_spec specs, int *len, int strlen)
 void	print_null(int *len, int strlen)
 {
 	char	str[7];
-	int 	i;
+	int		i;
 
 	i = 0;
 	ft_strlcpy(str, "(null)", 7);
@@ -87,9 +87,9 @@ void	print_null(int *len, int strlen)
 
 int	ft_printf_s(t_spec specs, va_list args)
 {
-	char	*s;
-	int		len;
-	int		strlen;
+	char *s;
+	int len;
+	int strlen;
 
 	s = va_arg(args, char *);
 	len = 0;

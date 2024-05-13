@@ -41,7 +41,8 @@ int	ft_printf_p(t_spec specs, va_list args)
 
 	p = va_arg(args, unsigned long long);
 	len = 0;
-	if (!(specs.flags & FLAG_HYPHEN || specs.flags == 0) || specs.flags & PREC_FLAG)
+	if (!(specs.flags & FLAG_HYPHEN || specs.flags == 0)
+		|| specs.flags & PREC_FLAG)
 		return (-1);
 	specs.flags |= FLAG_HASH;
 	if (specs.flags & FLAG_HYPHEN)

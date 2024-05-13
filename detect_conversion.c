@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 09:05:32 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/13 10:31:24 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/13 22:36:32 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ void	check_field_size(const char **s, t_spec *specs)
 	specs->precision = 0;
 	if (ft_isdigit(**s))
 	{
-		// specs->flags |= WIDTH_FLAG;
 		specs->width = ft_atoi(*s);
 		while (ft_isdigit(**s))
 			(*s)++;
@@ -74,7 +73,7 @@ int	detect_conversion(const char *str, va_list args)
 
 	len = 0;
 	set_flags(&str, &specs);
-	if (!is_valid_flags(specs.flags))
+	if (is_valid_flags(specs.flags))
 		return (-1);
 	check_field_size(&str, &specs);
 	if (specs.precision < 0)

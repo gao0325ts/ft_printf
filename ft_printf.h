@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 23:26:19 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/13 22:26:13 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/13 22:34:22 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include <stdarg.h>
 # include <stdlib.h>
 # include <unistd.h>
+
+#include <stdio.h>
 
 # define FD 1
 # define FLAG_HASH 0b0000000000000001

@@ -1,9 +1,9 @@
 #include <stdio.h>
 
-int			ft_printf(const char *format, ...);
+int	ft_printf(const char *format, ...);
 
-int main(void)
+int	main(void)
 {
 	printf("\n%d\n", ft_printf("%c", 'a'));
-    return 0;
+	return (0);
 }

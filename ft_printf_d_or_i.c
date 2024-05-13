@@ -41,7 +41,7 @@ void	put_dec_left(t_spec specs, int num, int *len)
 
 void	put_dec_right_1(t_spec specs, int num, int *len)
 {
-	int digits;
+	int	digits;
 
 	digits = count_digits(num);
 	print_spaces(digits, count_padded_len(specs, digits, num < 0), len);
@@ -63,11 +63,13 @@ void	put_dec_right_2(t_spec specs, int num, int *len)
 		print_symbol(specs.flags, num, len);
 		if (*len < 0)
 			return ;
-		print_zero_paddings(count_padded_len(specs, count_digits(num), num < 0), specs.width, len);
+		print_zero_paddings(count_padded_len(specs, count_digits(num), num < 0),
+			specs.width, len);
 	}
 	else
 	{
-		print_spaces(count_padded_len(specs, count_digits(num), num < 0), specs.width, len);
+		print_spaces(count_padded_len(specs, count_digits(num), num < 0),
+			specs.width, len);
 		if (*len < 0)
 			return ;
 		print_symbol(specs.flags, num, len);

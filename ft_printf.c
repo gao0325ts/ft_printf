@@ -41,8 +41,8 @@ int	ft_printf_processing(const char *format, va_list args)
 
 int	ft_printf(const char *format, ...)
 {
-	va_list	args;
-	int		result;
+	va_list args;
+	int result;
 
 	va_start(args, format);
 	result = ft_printf_processing(format, args);

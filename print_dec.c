@@ -67,7 +67,7 @@ int	print_u_decimal_processing(unsigned long long ll)
 
 void	print_u_decimal(unsigned int num, int *len)
 {
-	int tmp;
+	int					tmp;
 	unsigned long long	llu;
 
 	llu = (unsigned long long)num;
