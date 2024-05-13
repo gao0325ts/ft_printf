@@ -6,50 +6,50 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 09:43:52 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/13 12:17:12 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/13 12:52:53 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	put_str_left(char *s, int strlen, int width)
+void	put_str_left(char *s, t_spec specs, int *len, int strlen)
 {
-	int	len;
-
-	len = 0;
 	while (strlen--)
 	{
 		if (write(FD, s++, 1) < 0)
-			return (-1);
-		len++;
+		{
+			(*len) = -1;
+			return ;
+		}
+		(*len)++;
 	}
-	while (width--)
-	{
-		if (write(FD, " ", 1) < 0)
-			return (-1);
-		len++;
-	}
-	return (len);
+	print_spaces(*len, specs.width, len);
 }
 
-int	put_str_right(char *s, int strlen, int width)
+int	put_str_right(char *s, t_spec specs, int *len, int strlen)
 {
-	int	len;
-
-	len = 0;
-	while (width--)
-	{
-		if (write(FD, " ", 1) < 0)
-			return (-1);
-		len++;
-	}
+	print_spaces(*len, specs.width, len);
+	if (*len < 0)
+		return ;
 	while (strlen--)
 	{
 		if (write(FD, s++, 1) < 0)
-			return (-1);
-		len++;
+		{
+			(*len) = -1;
+			return ;
+		}
+		(*len)++;
 	}
-	return (len);
+}
+
+void	print_null(int *len)
+{
+	if (write(FD, "(null)", 6) < 0)
+	{
+		(*len) = -1;
+		return ;
+	}
+	(*len) = 6;
 }
 
 int	ft_printf_s(t_spec specs, va_list args)
@@ -60,14 +60,16 @@ int	ft_printf_s(t_spec specs, va_list args)
 
 	s = va_arg(args, char *);
 	len = 0;
-	strlen = ft_strlen(s);
 	if (!(specs.flags & FLAG_HYPHEN || specs.flags == 0))
 		return (-1);
-	if (specs.precision < ft_strlen(s) && specs.flags & PREC_FLAG)
+	if (!s)
+		print_null(&len);
+	strlen = ft_strlen(s);
+	if (specs.flags & PREC_FLAG && specs.precision < strlen)
 		strlen = specs.precision;
 	if (specs.flags & FLAG_HYPHEN)
-		len = put_str_left(s, strlen, specs.width - strlen);
+		put_str_left(s, specs, &len, strlen);
 	else
-		len = put_str_right(s, strlen, specs.width - strlen);
+		put_str_right(s, specs, &len, strlen);
 	return (len);
 }
