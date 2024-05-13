@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 22:34:21 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/13 13:30:00 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/13 22:20:46 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	put_hex_left(unsigned long long num, t_spec specs, int *len)
 	print_zero_paddings(count_digits_hex(num), specs.precision, len);
 	if (*len < 0)
 		return ;
-	print_hexadecimal(num, specs.flags & IS_X_UPPER, len);
+	print_hexadecimal(num, specs, len);
 	if (*len < 0)
 		return ;
 	print_spaces(*len, specs.width, len);
@@ -38,7 +38,7 @@ void	put_hex_right_1(unsigned long long num, t_spec specs, int *len)
 	print_zero_paddings(check_digits_hex(num), specs.precision, len);
 	if (*len < 0)
 		return ;
-	print_hexadecimal(num, specs.flags & IS_X_UPPER, len);
+	print_hexadecimal(num, specs.flags, len);
 }
 
 void	put_hex_right_2(unsigned long long num, t_spec specs, int *len)
@@ -61,7 +61,7 @@ void	put_hex_right_2(unsigned long long num, t_spec specs, int *len)
 		if (*len < 0)
 			return ;
 	}
-	print_hexadecimal(num, specs.flags & IS_X_UPPER, len);
+	print_hexadecimal(num, specs.flags, len);
 }
 
 int	ft_printf_x(t_spec specs, va_list args)
