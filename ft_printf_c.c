@@ -6,13 +6,13 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 09:43:05 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/13 08:52:06 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/13 10:38:38 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	put_char_left(char c, int width)
+int	put_char_left(int c, int width)
 {
 	int	len;
 
@@ -29,7 +29,7 @@ int	put_char_left(char c, int width)
 	return (len);
 }
 
-int	put_char_right(char c, int width)
+int	put_char_right(int c, int width)
 {
 	int	len;
 
@@ -51,7 +51,7 @@ int	ft_printf_c(t_spec specs, va_list args)
 	char	c;
 	int		len;
 
-	c = va_arg(args, char);
+	c = va_arg(args, int);
 	len = 0;
 	if (!(specs.flags & FLAG_HYPHEN || specs.flags == 0))
 		return (-1);

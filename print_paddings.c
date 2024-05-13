@@ -12,28 +12,28 @@
 
 #include "ft_printf.h"
 
-void    print_zero_paddings(int digits, int max_len, int *len)
+void	print_zero_paddings(int digits, int max_len, int *len)
 {
-    while (digits++ < max_len)
-    {
-        if (write(FD, "0", 1) < 0)
-        {
-            (*len) = -1;
-            return ;
-        }
-        (*len)++;
-    }
+	while (digits++ < max_len)
+	{
+		if (write(FD, "0", 1) < 0)
+		{
+			(*len) = -1;
+			return ;
+		}
+		(*len)++;
+	}
 }
 
-void    print_spaces(int digits, int max_len, int *len)
+void	print_spaces(int digits, int max_len, int *len)
 {
-    while (digits++ < max_len)
-    {
-        if (write(FD, " ", 1) < 0)
-        {
-            (*len) = -1;
-            return ;
-        }
-        (*len)++;
-    }
+	while (digits++ < max_len)
+	{
+		if (write(FD, " ", 1) < 0)
+		{
+			(*len) = -1;
+			return ;
+		}
+		(*len)++;
+	}
 }

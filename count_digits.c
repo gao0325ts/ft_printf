@@ -14,7 +14,7 @@
 
 int	count_digits(int num)
 {
-	int digits;
+	int	digits;
 
 	digits = 0;
 	while (num)
@@ -25,12 +25,12 @@ int	count_digits(int num)
 	return (digits);
 }
 
-int count_digits_u(unsigned int num)
+int	count_digits_u(unsigned int num)
 {
-	int digits;
+	int	digits;
 
 	digits = 0;
-	while(num)
+	while (num)
 	{
 		num /= 10;
 		digits++;
@@ -38,29 +38,29 @@ int count_digits_u(unsigned int num)
 	return (digits);
 }
 
-int count_digits_hex(unsigned long long num)
+int	count_digits_hex(unsigned long long num)
 {
-    int digits;
+	int	digits;
 
-    digits = 0;
-    while(num)
-    {
-        num /= 16;
-        digits++;
-    }
-    return (digits);
+	digits = 0;
+	while (num)
+	{
+		num /= 16;
+		digits++;
+	}
+	return (digits);
 }
 
 int	count_padded_digits(t_spec specs, int digits)
 {
-    int p_digits;
+	int p_digits;
 
-    p_digits = 0;
-    if (specs.flags & FLAG_HASH)
-        p_digits = 2;
-    if (digits < specs.precision)
-        p_digits += specs.precision;
-    else
-        p_digits += digits;
-    return (p_digits);
+	p_digits = 0;
+	if (specs.flags & FLAG_HASH)
+		p_digits = 2;
+	if (digits < specs.precision)
+		p_digits += specs.precision;
+	else
+		p_digits += digits;
+	return (p_digits);
 }

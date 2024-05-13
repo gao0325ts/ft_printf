@@ -37,7 +37,8 @@ void	put_u_dec_right(unsigned int num, t_spec specs, int *len)
 {
 	if (specs.flags & PREC_FLAG)
 	{
-		print_spaces(check_num_len(specs.precision, count_digits_u(num)), specs.precision, len);
+		print_spaces(check_num_len(specs.precision, count_digits_u(num)),
+			specs.precision, len);
 		if (*len < 0)
 			return ;
 		print_zero_paddings(count_digits_u(num), specs.width, len);
@@ -64,12 +65,13 @@ void	put_u_dec_right(unsigned int num, t_spec specs, int *len)
 
 int	ft_printf_u(t_spec specs, va_list args)
 {
-	unsigned int u;
-	int len;
+	unsigned int	u;
+	int				len;
 
 	u = va_arg(args, unsigned int);
 	len = 0;
-	if (!(specs.flags & FLAG_HYPHEN || specs.flags & FLAG_ZERO || specs.flags == 0))
+	if (!(specs.flags & FLAG_HYPHEN || specs.flags & FLAG_ZERO
+			|| specs.flags == 0))
 		return (-1);
 	if (specs.flags & FLAG_HYPHEN)
 		put_u_dec_left(u, specs, &len);

@@ -28,7 +28,8 @@ void	put_hex_left(unsigned long long num, t_spec specs, int *len)
 
 void	put_hex_right_1(unsigned long long num, t_spec specs, int *len)
 {
-	print_spaces(count_padded_digits(specs, count_digits_hex(num)), specs.width, len);
+	print_spaces(count_padded_digits(specs, count_digits_hex(num)), specs.width,
+		len);
 	if (*len < 0)
 		return ;
 	print_prefix(specs, len);
@@ -65,12 +66,13 @@ void	put_hex_right_2(unsigned long long num, t_spec specs, int *len)
 
 int	ft_printf_x(t_spec specs, va_list args)
 {
-	unsigned long long x;
-	int len;
+	unsigned long long	x;
+	int					len;
 
 	x = va_arg(args, unsigned long long);
 	len = 0;
-	if (!(specs.flags & FLAG_HASH || specs.flags & FLAG_HYPHEN || specs.flags & FLAG_ZERO || specs.flags == 0))
+	if (!(specs.flags & FLAG_HASH || specs.flags & FLAG_HYPHEN
+			|| specs.flags & FLAG_ZERO || specs.flags == 0))
 		return (-1);
 	if (specs.flags & FLAG_HYPHEN)
 		put_hex_left(x, specs, &len);

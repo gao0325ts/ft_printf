@@ -7,14 +7,17 @@ RM = rm -f
 
 SRCS = ft_printf.c \
 	detect_conversion.c \
-	print_args.c \
+	dispatcher.c \
 	ft_printf_c.c \
 	ft_printf_s.c \
 	ft_printf_p.c \
 	ft_printf_d_or_i.c \
 	ft_printf_u.c \
 	ft_printf_x.c \
-	print_hex.c
+	print_dec.c \
+	print_hex.c \
+	print_paddings.c \
+	count_digits.c
 
 OBJS = $(SRCS:.c=.o)
 

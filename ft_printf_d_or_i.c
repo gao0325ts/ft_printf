@@ -25,9 +25,9 @@ void	print_symbol(int flags, int num, int *len)
 	}
 }
 
-int check_output_len(t_spec specs, int num)
+int	check_output_len(t_spec specs, int num)
 {
-	int output_len;
+	int	output_len;
 
 	output_len = 0;
 	if (num < 0 || specs.flags & FLAG_PLUS || specs.flags & FLAG_SPACE)
@@ -96,8 +96,8 @@ void	put_dec_right(t_spec specs, int num, int *len, int output_len)
 
 int	ft_printf_d_or_i(t_spec specs, va_list args)
 {
-	int num;
-	int len;
+	int	num;
+	int	len;
 
 	num = va_arg(args, int);
 	len = 0;
