@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 23:26:19 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/13 10:41:41 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/13 12:14:44 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ int			is_valid_flags(int flags);
 void		check_field_size(const char **s, t_spec *specs);
 int			ft_printf_dispatcher(char const *s, t_spec specs, va_list args);
 int			ft_printf_c(t_spec specs, va_list args);
-int			put_char_left(int c, int width);
-int			put_char_right(int c, int width);
+int			put_char_left(int c, t_spec specs, int *len);
+int			put_char_right(int c, t_spec specs, int *len);
 int			ft_printf_s(t_spec specs, va_list args);
 int			put_str_left(char *s, int strlen, int width);
 int			put_str_right(char *s, int strlen, int width);
