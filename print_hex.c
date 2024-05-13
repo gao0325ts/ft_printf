@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 21:20:34 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/13 08:47:49 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/13 09:10:32 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,39 +40,36 @@ int	print_hex_lower(unsigned long long llu)
 	return (digits);
 }
 
-void	print_prefix(int is_upper, int *len)
+void	print_hexadecimal(unsigned long long llu, int is_upper, int *len)
 {
 	if (is_upper)
-	{
-		if (write(FD, "0X", 2) < 0)
-		{
-			(*len) = -1;
-			return ;
-		}
-	}
-	else
-	{
-		if (write(FD, "0x", 2) < 0)
-		{
-			(*len) = -1;
-			return ;
-		}
-	}
-	(*len) += 2;
-}
-
-void	print_hexadecimal(unsigned long long llu, t_spec specs, int *len)
-{
-	if (specs.flags & FLAG_HASH)
-	{
-		print_prefix(specs.flags & IS_X_UPPER, len);
-		if (*len < 0)
-			return ;
-	}
-	if (specs.flags & IS_X_UPPER)
 		(*len) += put_hex_upper(llu);
 	else
 		(*len) += put_hex_lower(llu);
+}
+
+void	print_prefix(t_spec specs, int *len)
+{
+	if (specs.flags & FLAG_HASH)
+	{
+		if (specs.flags & IS_X_UPPER)
+		{
+			if (write(FD, "0X", 2) < 0)
+			{
+				(*len) = -1;
+				return ;
+			}
+		}
+		else
+		{
+			if (write(FD, "0x", 2) < 0)
+			{
+				(*len) = -1;
+				return ;
+			}
+		}
+		(*len) += 2;
+	}
 }
 
 // #include <stdio.h>

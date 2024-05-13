@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 21:44:12 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/12 19:46:17 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/13 08:57:46 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ int check_output_len(t_spec specs, int num)
 	output_len = 0;
 	if (num < 0 || specs.flags & FLAG_PLUS || specs.flags & FLAG_SPACE)
 		output_len++;
-	if (check_digits(num) < specs.precision)
+	if (count_digits(num) < specs.precision)
 		output_len += specs.precision;
 	else
-		output_len += check_digits(num);
+		output_len += count_digits(num);
 	if (output_len < specs.width)
 		output_len = specs.width;
 	return (output_len);
@@ -46,7 +46,7 @@ void	put_dec_left(t_spec specs, int num, int *len)
 	print_symbol(specs.flags, num, len);
 	if (*len < 0)
 		return ;
-	while (check_digits(num) < specs.precision--)
+	while (count_digits(num) < specs.precision--)
 	{
 		if (write(FD, "0", 1) < 0)
 		{
@@ -82,7 +82,7 @@ void	put_dec_right(t_spec specs, int num, int *len, int output_len)
 	print_symbol(specs.flags, num, len);
 	if (*len < 0)
 		return ;
-	while (check_digits(num) < specs.precision--)
+	while (count_digits(num) < specs.precision--)
 	{
 		if (write(FD, "0", 1) < 0)
 		{

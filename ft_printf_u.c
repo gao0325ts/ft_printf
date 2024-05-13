@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 22:25:55 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/13 08:52:06 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/13 08:57:46 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,20 @@ void	put_u_dec_left(unsigned int num, t_spec specs, int *len)
 {
 	if (specs.flags & PREC_FLAG)
 	{
-		print_zero_paddings(check_digits_u(num), specs.precision, len);
+		print_zero_paddings(count_digits_u(num), specs.precision, len);
 		if (*len < 0)
 			return ;
 		print_u_decimal(num, len);
 		if (*len < 0)
 			return ;
-		print_spaces(check_digits_u(num), specs.width, len);
+		print_spaces(count_digits_u(num), specs.width, len);
 	}
 	else
 	{
 		print_u_decimal(num, len);
 		if (*len < 0)
 			return ;
-		print_spaces(check_digits_u(num), specs, len);
+		print_spaces(count_digits_u(num), specs, len);
 	}
 }
 
@@ -37,10 +37,10 @@ void	put_u_dec_right(unsigned int num, t_spec specs, int *len)
 {
 	if (specs.flags & PREC_FLAG)
 	{
-		print_spaces(check_num_len(specs.precision, check_digits_u(num)), specs.precision, len);
+		print_spaces(check_num_len(specs.precision, count_digits_u(num)), specs.precision, len);
 		if (*len < 0)
 			return ;
-		print_zero_paddings(check_digits_u(num), specs.width, len);
+		print_zero_paddings(count_digits_u(num), specs.width, len);
 		if (*len < 0)
 			return ;
 	}
@@ -48,13 +48,13 @@ void	put_u_dec_right(unsigned int num, t_spec specs, int *len)
 	{
 		if (specs.flags & FLAG_ZERO)
 		{
-			print_zero_paddings(check_digits_u(num), specs.width, len);
+			print_zero_paddings(count_digits_u(num), specs.width, len);
 			if (*len < 0)
 				return ;
 		}
 		else
 		{
-			print_spaces(check_digits_u(num), specs.width, len);
+			print_spaces(count_digits_u(num), specs.width, len);
 			if (*len < 0)
 				return ;
 		}
