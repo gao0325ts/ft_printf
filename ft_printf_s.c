@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 09:43:52 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/13 12:53:29 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/13 12:54:29 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	put_str_left(char *s, t_spec specs, int *len, int strlen)
 
 void	put_str_right(char *s, t_spec specs, int *len, int strlen)
 {
-	print_spaces(*len, specs.width, len);
+	print_spaces(strlen, specs.width, len);
 	if (*len < 0)
 		return ;
 	while (strlen--)
