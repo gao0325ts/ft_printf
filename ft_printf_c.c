@@ -6,44 +6,31 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 09:43:05 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/13 10:38:38 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/13 12:09:35 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	put_char_left(int c, int width)
+int	put_char_left(int c, t_spec specs, int *len)
 {
-	int	len;
-
-	len = 0;
-	if (write(FD, &c, 1))
-		return (-1);
-	len++;
-	while (--width)
-	{
-		if (write(FD, " ", 1) < 0)
-			return (-1);
-		len++;
-	}
-	return (len);
+	if (write(FD, &c, 1) < 0)
+		return ;
+	(*len) = 1;
+	print_spaces(1, specs.width, len);
 }
 
-int	put_char_right(int c, int width)
+int	put_char_right(int c, t_spec specs, int *len)
 {
-	int	len;
-
-	len = 0;
-	while (--width)
+	print_spaces(1, specs.width, len);
+	if (*len < 0)
+		return ;
+	if (write(FD, &c, 1) < 0)
 	{
-		if (write(FD, " ", 1) < 0)
-			return (-1);
-		len++;
+		(*len) = -1;
+		return ;
 	}
-	if (write(FD, &c, 1))
-		return (-1);
-	len++;
-	return (len);
+	(*len)++;
 }
 
 int	ft_printf_c(t_spec specs, va_list args)
@@ -52,14 +39,12 @@ int	ft_printf_c(t_spec specs, va_list args)
 	int		len;
 
 	c = va_arg(args, int);
-	len = 0;
-	if (!(specs.flags & FLAG_HYPHEN || specs.flags == 0))
-		return (-1);
-	if (specs.flags & PREC_FLAG)
+	len = -1;
+	if (!(specs.flags & FLAG_HYPHEN || specs.flags == 0) || specs.flags & PREC_FLAG)
 		return (-1);
 	if (specs.flags & FLAG_HYPHEN)
-		len = put_char_left(c, specs.width);
+		put_char_left(c, specs, &len);
 	else
-		len = put_char_right(c, specs.width);
+		put_char_right(c, specs, &len);
 	return (len);
 }
