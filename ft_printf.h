@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 23:26:19 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/13 14:38:52 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/13 21:09:44 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@
 # define FLAG_HYPHEN 0b0000000000000100
 # define FLAG_SPACE 0b0000000000001000
 # define FLAG_PLUS 0b0000000000010000
-// # define WIDTH_FLAG 0b0000000000100000
-# define PREC_FLAG 0b0000000001000000
-# define IS_X_UPPER 0b0000000010000000
+# define PREC_FLAG 0b0000000000100000
+# define IS_X_UPPER 0b0000000001000000
+# define IS_PD_ZERO 0b0000000010000000
 
 typedef struct s_spec
 {

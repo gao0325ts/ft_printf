@@ -1,41 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_paddings.c                                   :+:      :+:    :+:   */
+/*   count_len.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/12 16:43:57 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/13 21:11:18 by stakada          ###   ########.fr       */
+/*   Created: 2024/05/13 20:35:44 by stakada           #+#    #+#             */
+/*   Updated: 2024/05/13 21:03:22 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	print_paddings(int digits, int max_len, t_spec specs, int *len)
+int	count_padded_len(t_spec specs, int digits)
 {
-	if (specs.flags & IS_PD_ZERO)
-	{
-		while (digits++ < max_len)
-		{
-			if (write(FD, "0", 1) < 0)
-			{
-				(*len) = -1;
-				return ;
-			}
-			(*len)++;
-		}
-	}
+	int	p_len;
+
+	p_len = 0;
+	if (specs.flags & FLAG_HASH)
+		p_len = 2;
+    if (num < 0 || specs.flags & FLAG_PLUS || specs.flags & FLAG_SPACE)
+		p_len++;
+	if (digits < specs.precision)
+		p_len += specs.precision;
 	else
-	{
-		while (digits++ < max_len)
-		{
-			if (write(FD, " ", 1) < 0)
-			{
-				(*len) = -1;
-				return ;
-			}
-			(*len)++;
-		}
-	}
+		p_len += digits;
+	return (p_len);
 }

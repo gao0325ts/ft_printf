@@ -1,50 +1,30 @@
 #include <stdio.h>
 
-int main(void)
+int	main(void)
 {
-    char *s = "abc";
-    void *p = &s;
-    int tmp;
-
-    tmp = printf("1.[%p]\n", p);
-    printf("1=%d\n", tmp - 5);
-
-    // printf("2.[%#p]\n", p); // flag_hash
-    // printf("3.[%0p]\n", p); // flag_zero
-
-    tmp = printf("4.[%-p]\n", p);
-    printf("4=%d\n", tmp - 5);
-
-    tmp = printf("5.[%-30p]\n", p);
-    printf("5=%d\n", tmp - 5);
-
-    // printf("6.[% p]\n", p); // flag_space
-    // printf("7.[%+p]\n", p); // flag_plus
-
-    tmp = printf("8.[%.p]\n", p);
-    printf("8=%d\n", tmp - 5);
-
-    // printf("9.[%.0p]\n", p); // undefined
-    // printf("10.[%.5p]\n", p); // undefined
-    // printf("11.[%0.p]\n", p); // flag_zero
-
-    tmp = printf("12.[%30.p]\n", p);
-    printf("12=%d\n", tmp - 6);
-
-    // printf("13.[%0.0p]\n", p); // flag_zero
-    // printf("14.[%0.5p]\n", p); // flag_zero
-    // printf("15.[%05.5p]\n", p); // flag_zero
-
-    // printf("16.[%5.0p]\n", p); // undefined
-    // printf("17.[%5.2p]\n", p); // undefined
-
-    tmp = printf("18.[%30p]\n", p);
-    printf("18=%d\n", tmp - 6);
-
-    // printf("19.[%-5.2p]\n", p); // undefined
-
-    tmp = printf("20.[%p]\n", NULL);
-    printf("20=%d\n", tmp - 6);
-
-    return (0);
+	int d = 123;
+	int m = -123;
+	// int tmp;
+	printf("1.[%d]\n", m);
+	// printf("2.[%#d]\n", m); // flag_hash
+	printf("3.[%5d]\n", m);
+	printf("4.[%-d]\n", m);
+	printf("5.[%0.10d]\n", m);
+	printf("6.[%- 2d]\n", m);
+	printf("7.[%+-2d]\n", m);
+	printf("8.[%.d]\n", m);
+	printf("9.[%.0d]\n", m);
+	printf("10.[%5.d]\n", m);
+	printf("11.[%0.d]\n", m);
+	printf("12.[%+1.2d]\n", m);
+    printf("13.[%-8d]\n", d);
+	printf("13-2.[%-8d]\n", m);
+	printf("14.[%1.4d]\n", d);
+	printf("14-2.[%1.4d]\n", m);
+	printf("15.[%+10.5d]\n", m);
+	printf("16.[%5.0d]\n", m);
+	printf("17.[%5.6d]\n", m);
+	printf("18.[%- 8d]\n", m);
+	printf("19.[%-10.5d]\n", m);
+	return (0);
 }
