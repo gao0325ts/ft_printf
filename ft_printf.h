@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 23:26:19 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/13 22:17:24 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/13 22:18:21 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void		print_decimal(int num, int *len);
 int			print_decimal_processing(long long ll);
 void		print_u_decimal(unsigned int num, int *len);
 int			print_u_decimal_processing(unsigned long long ll);
-void		print_hexadecimal(unsigned long long llu, int is_upper, int *len);
+void		print_hexadecimal(unsigned long long llu, t_spec specs, int *len);
 int			print_hex_upper(unsigned long long llu);
 int			print_hex_lower(unsigned long long llu);
 void		print_prefix(t_spec specs, int *len);
