@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 21:44:12 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/13 08:57:46 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/13 20:23:09 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	put_dec_left(t_spec specs, int num, int *len)
 
 void	put_dec_right(t_spec specs, int num, int *len, int output_len)
 {
-	while (output_len++ < specs.width)
+	while (output_len++ < specs.width)	
 	{
 		if (write(FD, " ", 1) < 0)
 		{
