@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 09:43:05 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/13 12:09:35 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/13 12:17:02 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,11 @@
 int	put_char_left(int c, t_spec specs, int *len)
 {
 	if (write(FD, &c, 1) < 0)
+	{
+		(*len) = -1;
 		return ;
-	(*len) = 1;
+	}
+	(*len)++;
 	print_spaces(1, specs.width, len);
 }
 
@@ -39,7 +42,7 @@ int	ft_printf_c(t_spec specs, va_list args)
 	int		len;
 
 	c = va_arg(args, int);
-	len = -1;
+	len = 0;
 	if (!(specs.flags & FLAG_HYPHEN || specs.flags == 0) || specs.flags & PREC_FLAG)
 		return (-1);
 	if (specs.flags & FLAG_HYPHEN)
