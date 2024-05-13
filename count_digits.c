@@ -6,15 +6,15 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 17:13:38 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/13 10:17:50 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/13 13:22:13 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	count_digits(int num)
+size_t	count_digits(int num)
 {
-	int	digits;
+	size_t	digits;
 
 	digits = 0;
 	while (num)
@@ -25,9 +25,9 @@ int	count_digits(int num)
 	return (digits);
 }
 
-int	count_digits_u(unsigned int num)
+size_t	count_digits_u(unsigned int num)
 {
-	int	digits;
+	size_t	digits;
 
 	digits = 0;
 	while (num)
@@ -38,9 +38,9 @@ int	count_digits_u(unsigned int num)
 	return (digits);
 }
 
-int	count_digits_hex(unsigned long long num)
+size_t	count_digits_hex(unsigned long long num)
 {
-	int	digits;
+	size_t	digits;
 
 	digits = 0;
 	while (num)
@@ -51,9 +51,9 @@ int	count_digits_hex(unsigned long long num)
 	return (digits);
 }
 
-int	count_padded_digits(t_spec specs, int digits)
+size_t	count_padded_digits(t_spec specs, int digits)
 {
-	int p_digits;
+	size_t	p_digits;
 
 	p_digits = 0;
 	if (specs.flags & FLAG_HASH)
