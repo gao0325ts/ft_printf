@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 09:05:32 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/13 22:36:32 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/14 16:50:53 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,6 @@ int	is_valid_flags(int flags)
 		return (-1);
 	if (flags == (FLAG_HASH | FLAG_PLUS))
 		return (-1);
-	if (flags == (FLAG_HYPHEN | FLAG_ZERO))
-		return (-1);
 	return (0);
 }
 
@@ -56,26 +54,30 @@ void	check_field_size(const char **s, t_spec *specs)
 	}
 	if (**s == '.')
 	{
+		specs->flags |= PREC_FLAG;
 		(*s)++;
 		if (!ft_isdigit(**s))
 			return ;
-		specs->flags |= PREC_FLAG;
 		specs->precision = ft_atoi(*s);
 		while (ft_isdigit(**s))
 			(*s)++;
 	}
 }
 
-int	detect_conversion(const char *str, va_list args)
+int	detect_conversion(const char **str, va_list args)
 {
 	int		len;
 	t_spec	specs;
 
 	len = 0;
-	set_flags(&str, &specs);
+	(*str)++;
+	// printf("dc:%s\n", *str);
+	set_flags(str, &specs);
+	// printf("dc2:%s\n", *str);
 	if (is_valid_flags(specs.flags))
 		return (-1);
-	check_field_size(&str, &specs);
+	check_field_size(str, &specs);
+	// printf("dc3:%s\n", *str);
 	if (specs.precision < 0)
 		return (-1);
 	return (ft_printf_dispatcher(str, specs, args));

@@ -14,6 +14,7 @@ SRCS = ft_printf.c \
 	ft_printf_d_or_i.c \
 	ft_printf_u.c \
 	ft_printf_x.c \
+	ft_printf_percent.c \
 	print_dec.c \
 	print_hex.c \
 	print_paddings.c \
@@ -34,6 +35,9 @@ $(NAME): $(OBJS)
 
 .c.o:
 	$(CC) $(CFLAGS) -c $< -o $@
+
+bonus:
+	make all
 
 clean:
 	make -C $(LIBFT_DIR) clean

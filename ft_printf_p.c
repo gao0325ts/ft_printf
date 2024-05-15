@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:23:16 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/13 13:44:58 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/15 21:28:32 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	put_pointer_left(unsigned long long p, t_spec specs, int *len)
 
 void	put_pointer_right(unsigned long long p, t_spec specs, int *len)
 {
-	print_spaces(count_digits_hex(p) + 2, specs.width, len);
+	print_spaces(count_digits_hex(p, specs) + 2, specs.width, len);
 	if (*len < 0)
 		return ;
 	print_prefix(specs, len);
@@ -41,13 +41,11 @@ int	ft_printf_p(t_spec specs, va_list args)
 
 	p = va_arg(args, unsigned long long);
 	len = 0;
-	if (!(specs.flags & FLAG_HYPHEN || specs.flags == 0)
-		|| specs.flags & PREC_FLAG)
-		return (-1);
 	specs.flags |= FLAG_HASH;
+	// printf("%d\n", specs.flags & FLAG_HYPHEN);
 	if (specs.flags & FLAG_HYPHEN)
 		put_pointer_left(p, specs, &len);
 	else
-		put_pointer_left(p, specs, &len);
+		put_pointer_right(p, specs, &len);
 	return (len);
 }

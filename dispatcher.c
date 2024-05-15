@@ -6,42 +6,32 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 09:28:04 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/13 10:35:55 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/15 20:58:10 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf_percent(void)
+int	ft_printf_dispatcher(char const **s, t_spec specs, va_list args)
 {
-	if (write(FD, "%", 1) < 0)
-		return (-1);
-	return (1);
-}
-
-int	ft_printf_dispatcher(char const *s, t_spec specs, va_list args)
-{
-	int	len;
-
-	len = -1;
-	if (*s == 'c')
-		len = ft_printf_c(specs, args);
-	if (*s == 's')
-		len = ft_printf_s(specs, args);
-	if (*s == 'p')
-		len = ft_printf_p(specs, args);
-	if (*s == 'd' || *s == 'i')
-		len = ft_printf_d_or_i(specs, args);
-	if (*s == 'u')
-		len = ft_printf_u(specs, args);
-	if (*s == 'x')
-		len = ft_printf_x(specs, args);
-	if (*s == 'X')
+	if (**s == 'c')
+		return (ft_printf_c(specs, args));
+	if (**s == 's')
+		return (ft_printf_s(specs, args));
+	if (**s == 'p')
+		return (ft_printf_p(specs, args));
+	if (**s == 'd' || **s == 'i')
+		return (ft_printf_d_or_i(specs, args));
+	if (**s == 'u')
+		return (ft_printf_u(specs, args));
+	if (**s == 'x')
+		return (ft_printf_x(specs, args));
+	if (**s == 'X')
 	{
 		specs.flags |= IS_X_UPPER;
-		len = ft_printf_x(specs, args);
+		return (ft_printf_x(specs, args));
 	}
-	if (*s == '%')
-		len = ft_printf_percent();
-	return (len);
+	if (**s == '%')
+		return (ft_printf_percent(specs));
+	return (0);
 }
