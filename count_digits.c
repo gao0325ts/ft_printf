@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 16:27:52 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/15 21:24:41 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/15 21:35:54 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ int	count_digits(int num, t_spec specs)
 	return (digits);
 }
 
-int count_abs_digits(int num, t_spec specs)
+int	count_abs_digits(int num, t_spec specs)
 {
-	int abs_digits;
+	int	abs_digits;
 
 	abs_digits = 0;
 	if (!num && specs.flags & PREC_FLAG && !specs.precision)
@@ -48,9 +48,9 @@ int count_abs_digits(int num, t_spec specs)
 	return (abs_digits);
 }
 
-int count_abs_digits_u(unsigned int num, t_spec specs)
+int	count_abs_digits_u(unsigned int num, t_spec specs)
 {
-	int abs_digits;
+	int	abs_digits;
 
 	abs_digits = 0;
 	if (!num && specs.flags & PREC_FLAG && !specs.precision)

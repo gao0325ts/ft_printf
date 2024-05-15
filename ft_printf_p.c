@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 19:23:16 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/15 21:28:32 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/15 21:33:05 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ int	ft_printf_p(t_spec specs, va_list args)
 	p = va_arg(args, unsigned long long);
 	len = 0;
 	specs.flags |= FLAG_HASH;
-	// printf("%d\n", specs.flags & FLAG_HYPHEN);
 	if (specs.flags & FLAG_HYPHEN)
 		put_pointer_left(p, specs, &len);
 	else

@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 09:05:32 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/14 16:50:53 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/15 21:32:40 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,13 +71,10 @@ int	detect_conversion(const char **str, va_list args)
 
 	len = 0;
 	(*str)++;
-	// printf("dc:%s\n", *str);
 	set_flags(str, &specs);
-	// printf("dc2:%s\n", *str);
 	if (is_valid_flags(specs.flags))
 		return (-1);
 	check_field_size(str, &specs);
-	// printf("dc3:%s\n", *str);
 	if (specs.precision < 0)
 		return (-1);
 	return (ft_printf_dispatcher(str, specs, args));

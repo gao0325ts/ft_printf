@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 21:20:34 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/14 16:38:54 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/15 21:34:14 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ int	print_hex_lower(unsigned long long llu)
 	if (llu >= 16)
 		digits += print_hex_lower(llu / 16);
 	c = "0123456789abcdef"[llu % 16];
-	// printf("c=%c\n", c);
 	if (write(1, &c, 1) < 0)
 		return (-1);
 	return (digits);
@@ -43,7 +42,6 @@ int	print_hex_lower(unsigned long long llu)
 
 void	print_hexadecimal(unsigned long long llu, t_spec specs, int *len)
 {
-	// printf("%d\n", specs.flags);
 	if (specs.flags & IS_X_UPPER)
 		(*len) += print_hex_upper(llu);
 	else

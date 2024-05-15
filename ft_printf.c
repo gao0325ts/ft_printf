@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 09:37:34 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/14 15:33:49 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/15 21:36:15 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,9 @@ int	ft_printf_processing(const char *format, va_list args)
 		if (*format == '%')
 		{
 			tmp = detect_conversion(&format, args);
-			// printf("tmp=%d\n", tmp);
 			if (tmp == -1)
 				return (-1);
 			len += tmp;
-			format++;
-			// printf("format=%s\n", format);
 		}
 		else
 		{
@@ -37,17 +34,17 @@ int	ft_printf_processing(const char *format, va_list args)
 				if (write(FD, format, 1) < 0)
 					return (-1);
 				len++;
-				format++;
 			}
 		}
+		format++;
 	}
 	return (len);
 }
 
 int	ft_printf(const char *format, ...)
 {
-	va_list args;
-	int result;
+	va_list	args;
+	int		result;
 
 	va_start(args, format);
 	result = ft_printf_processing(format, args);

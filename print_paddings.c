@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/12 16:43:57 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/14 16:33:30 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/15 21:34:24 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	print_zero_paddings(int digits, int max_len, int *len)
 			(*len) = -1;
 			return ;
 		}
-		// printf("pzp\n");
 		(*len)++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 09:43:52 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/14 16:51:48 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/15 21:36:56 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ void	put_str_right(char *s, t_spec specs, int *len, int strlen)
 	{
 		while (strlen--)
 		{
-			// printf("\nstrlen=%d\nnow=%c\n", strlen, s[i]);
 			if (write(FD, &s[i++], 1) < 0)
 			{
 				(*len) = -1;
@@ -91,19 +90,15 @@ void	print_null(int *len, int strlen)
 
 int	ft_printf_s(t_spec specs, va_list args)
 {
-	char *s;
-	int len;
-	int strlen;
+	char	*s;
+	int		len;
+	int		strlen;
 
 	s = va_arg(args, char *);
-	// printf("s=%s\n", s);
 	len = 0;
-	// printf("%d\n", specs.precision);
 	strlen = count_strlen(s);
-	// printf("%d\n", strlen);
 	if (specs.flags & PREC_FLAG && specs.precision < strlen)
 		strlen = specs.precision;
-	// printf("strlen=%d\n", strlen);
 	if (specs.flags & FLAG_HYPHEN)
 		put_str_left(s, specs, &len, strlen);
 	else

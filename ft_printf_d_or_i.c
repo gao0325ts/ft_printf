@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 21:44:12 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/15 21:27:30 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/15 21:33:01 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ void	put_dec_left(t_spec specs, int num, int *len)
 		print_symbol(specs.flags, num, len);
 	if (*len < 0)
 		return ;
-	// printf("%d\n", specs.precision);
 	print_zero_paddings(count_abs_digits(num, specs), specs.precision, len);
 	if (*len < 0)
 		return ;
@@ -55,22 +54,17 @@ void	put_dec_left(t_spec specs, int num, int *len)
 		print_decimal(num, len);
 	if (*len < 0)
 		return ;
-	// printf("%d\n", *len);
 	print_spaces(*len, specs.width, len);
 }
 
 void	put_dec_right_1(t_spec specs, int num, int *len)
 {
-	// int digits = count_digits(num);
-	// int abs_digits = count_abs_digits(num);
-	// printf("digits=%d\n", digits);
-	// printf("pd_len=%d\n", count_padded_len(specs, abs_digits, num < 0));
-	print_spaces(count_padded_len(specs, count_abs_digits(num, specs), num < 0), specs.width, len);
+	print_spaces(count_padded_len(specs, count_abs_digits(num, specs), num < 0),
+		specs.width, len);
 	if (*len < 0)
 		return ;
 	if (num < 0 || specs.flags & FLAG_PLUS || specs.flags & FLAG_SPACE)
 		print_symbol(specs.flags, num, len);
-	// printf("len=%d\n", *len);
 	if (*len < 0)
 		return ;
 	print_zero_paddings(count_abs_digits(num, specs), specs.precision, len);
@@ -78,7 +72,6 @@ void	put_dec_right_1(t_spec specs, int num, int *len)
 		return ;
 	if (!(!num && specs.flags & PREC_FLAG && !specs.precision))
 		print_decimal(num, len);
-	// printf("len=%d\n", *len);
 }
 
 void	put_dec_right_2(t_spec specs, int num, int *len)
@@ -89,12 +82,13 @@ void	put_dec_right_2(t_spec specs, int num, int *len)
 			print_symbol(specs.flags, num, len);
 		if (*len < 0)
 			return ;
-		print_zero_paddings(count_padded_len(specs, count_abs_digits(num, specs), num < 0), specs.width, len);
+		print_zero_paddings(count_padded_len(specs, count_abs_digits(num,
+					specs), num < 0), specs.width, len);
 	}
 	else
 	{
-		print_spaces(count_padded_len(specs, count_abs_digits(num, specs), num < 0),
-			specs.width, len);
+		print_spaces(count_padded_len(specs, count_abs_digits(num, specs),
+				num < 0), specs.width, len);
 		if (*len < 0)
 			return ;
 		if (num < 0 || specs.flags & FLAG_PLUS || specs.flags & FLAG_SPACE)
@@ -112,7 +106,6 @@ int	ft_printf_d_or_i(t_spec specs, va_list args)
 	int	len;
 
 	num = va_arg(args, int);
-	// printf("%d\n", num);
 	len = 0;
 	if (specs.flags & FLAG_HYPHEN)
 		put_dec_left(specs, num, &len);
@@ -120,6 +113,5 @@ int	ft_printf_d_or_i(t_spec specs, va_list args)
 		put_dec_right_1(specs, num, &len);
 	else
 		put_dec_right_2(specs, num, &len);
-	// printf("len=%d\n", len);
 	return (len);
 }
