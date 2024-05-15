@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 09:05:32 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/15 21:32:40 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/16 08:14:10 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,6 @@ void	set_flags(const char **s, t_spec *specs)
 			specs->flags |= FLAG_PLUS;
 		(*s)++;
 	}
-}
-
-int	is_valid_flags(int flags)
-{
-	if (flags == (FLAG_HASH | FLAG_SPACE))
-		return (-1);
-	if (flags == (FLAG_SPACE | FLAG_PLUS))
-		return (-1);
-	if (flags == (FLAG_HASH | FLAG_PLUS))
-		return (-1);
-	return (0);
 }
 
 void	check_field_size(const char **s, t_spec *specs)
@@ -72,8 +61,6 @@ int	detect_conversion(const char **str, va_list args)
 	len = 0;
 	(*str)++;
 	set_flags(str, &specs);
-	if (is_valid_flags(specs.flags))
-		return (-1);
 	check_field_size(str, &specs);
 	if (specs.precision < 0)
 		return (-1);

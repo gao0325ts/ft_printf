@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 23:26:19 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/15 21:25:51 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/16 08:14:12 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ int		ft_printf(const char *format, ...);
 int		ft_printf_processing(const char *format, va_list args);
 int		detect_conversion(const char **str, va_list args);
 void	set_flags(const char **s, t_spec *specs);
-int		is_valid_flags(int flags);
 void	check_field_size(const char **s, t_spec *specs);
 int		ft_printf_dispatcher(char const **s, t_spec specs, va_list args);
 int		ft_printf_c(t_spec specs, va_list args);
