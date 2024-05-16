@@ -19,20 +19,12 @@ void	put_u_dec_left(unsigned int num, t_spec specs, int *len)
 		print_zero_paddings(count_digits_u(num, specs), specs.precision, len);
 		if (*len < 0)
 			return ;
+	}
 		if (!(!num && specs.flags & PREC_FLAG && !specs.precision))
 			print_u_decimal(num, len);
 		if (*len < 0)
 			return ;
 		print_spaces(*len, specs.width, len);
-	}
-	else
-	{
-		if (!(!num && specs.flags & PREC_FLAG && !specs.precision))
-			print_u_decimal(num, len);
-		if (*len < 0)
-			return ;
-		print_spaces(*len, specs.width, len);
-	}
 }
 
 void	put_u_dec_right(unsigned int num, t_spec specs, int *len)
