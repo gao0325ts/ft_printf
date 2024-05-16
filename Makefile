@@ -29,7 +29,7 @@ LIBFT_NAME = libft.a
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	make -C $(LIBFT_DIR)
+	@make -C $(LIBFT_DIR)
 	cp $(LIBFT_DIR)/$(LIBFT_NAME) $(NAME)
 	ar rcs $@ $^
 
@@ -37,10 +37,10 @@ $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 bonus:
-	make all
+	@make all
 
 clean:
-	make -C $(LIBFT_DIR) clean
+	@make -C $(LIBFT_DIR) clean
 	$(RM) $(OBJS)
 
 fclean: clean
