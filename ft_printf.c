@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 09:37:34 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/15 21:43:56 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/16 09:04:16 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_printf_processing(const char *format, va_list args)
 	{
 		if (*format == '%')
 		{
-			tmp = detect_conversion(&format, args);
+			tmp = ft_printf_dispatcher(&format, args);
 			if (tmp == -1)
 				return (-1);
 			len += tmp;

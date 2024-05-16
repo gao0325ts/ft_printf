@@ -6,14 +6,19 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 09:28:04 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/16 08:10:16 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/16 08:45:37 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf_dispatcher(const char **s, t_spec specs, va_list args)
+int	ft_printf_dispatcher(const char **s, va_list args)
 {
+	t_spec	specs;
+
+	detect_conversion(s, &specs);
+	if (!**s)
+		return (0);
 	if (**s == 'c')
 		return (ft_printf_c(specs, args));
 	if (**s == 's')
@@ -33,5 +38,5 @@ int	ft_printf_dispatcher(const char **s, t_spec specs, va_list args)
 	}
 	if (**s == '%')
 		return (ft_printf_percent(specs));
-	return (0);
+	return (write(FD, *s, 1));
 }
