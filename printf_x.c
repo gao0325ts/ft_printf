@@ -55,8 +55,6 @@ void	put_hex_right_2(unsigned long long num, t_spec specs, int *len)
 					specs), 0), specs.width, len);
 		if (*len < 0)
 			return ;
-		if (*len < 0)
-			return ;
 	}
 	else
 	{
