@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 22:25:55 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/16 08:21:56 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/17 23:33:02 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ void	put_u_dec_left(unsigned int num, t_spec specs, int *len)
 		if (*len < 0)
 			return ;
 	}
-		if (!(!num && specs.flags & PREC_FLAG && !specs.precision))
-			print_u_decimal(num, len);
-		if (*len < 0)
-			return ;
-		print_spaces(*len, specs.width, len);
+	if (!(!num && specs.flags & PREC_FLAG && !specs.precision))
+		print_u_decimal(num, specs, len);
+	if (*len < 0)
+		return ;
+	print_spaces(*len, specs.width, len);
 }
 
 void	put_u_dec_right(unsigned int num, t_spec specs, int *len)
@@ -49,7 +49,7 @@ void	put_u_dec_right(unsigned int num, t_spec specs, int *len)
 			return ;
 	}
 	if (!(!num && specs.flags & PREC_FLAG && !specs.precision))
-		print_u_decimal(num, len);
+		print_u_decimal(num, specs, len);
 }
 
 int	ft_printf_u(t_spec specs, va_list args)

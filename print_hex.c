@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 21:20:34 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/15 21:34:14 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/17 22:45:15 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	print_hex_upper(unsigned long long llu)
 	int		digits;
 	char	c;
 
-	digits = 1;
+	digits = 0;
 	if (llu >= 16)
 		digits += print_hex_upper(llu / 16);
 	c = "0123456789ABCDEF"[llu % 16];
@@ -31,7 +31,7 @@ int	print_hex_lower(unsigned long long llu)
 	int		digits;
 	char	c;
 
-	digits = 1;
+	digits = 0;
 	if (llu >= 16)
 		digits += print_hex_lower(llu / 16);
 	c = "0123456789abcdef"[llu % 16];
@@ -43,9 +43,23 @@ int	print_hex_lower(unsigned long long llu)
 void	print_hexadecimal(unsigned long long llu, t_spec specs, int *len)
 {
 	if (specs.flags & IS_X_UPPER)
-		(*len) += print_hex_upper(llu);
+	{
+		if (print_hex_upper(llu) < 0)
+		{
+			(*len) = -1;
+			return ;
+		}
+		(*len) += count_digits_hex(llu, specs);
+	}
 	else
-		(*len) += print_hex_lower(llu);
+	{
+		if (print_hex_lower(llu) < 0)
+		{
+			(*len) = -1;
+			return ;
+		}
+		(*len) += count_digits_hex(llu, specs);
+	}
 }
 
 void	print_prefix(t_spec specs, int *len)

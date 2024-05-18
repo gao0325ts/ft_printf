@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_d_or_i.c                                 :+:      :+:    :+:   */
+/*   printf_d_or_i.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 21:44:12 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/15 21:33:01 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/17 22:45:59 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	put_dec_left(t_spec specs, int num, int *len)
 	if (*len < 0)
 		return ;
 	if (!(!num && specs.flags & PREC_FLAG && !specs.precision))
-		print_decimal(num, len);
+		print_decimal(num, specs, len);
 	if (*len < 0)
 		return ;
 	print_spaces(*len, specs.width, len);
@@ -71,7 +71,7 @@ void	put_dec_right_1(t_spec specs, int num, int *len)
 	if (*len < 0)
 		return ;
 	if (!(!num && specs.flags & PREC_FLAG && !specs.precision))
-		print_decimal(num, len);
+		print_decimal(num, specs, len);
 }
 
 void	put_dec_right_2(t_spec specs, int num, int *len)
@@ -97,7 +97,7 @@ void	put_dec_right_2(t_spec specs, int num, int *len)
 	if (*len < 0)
 		return ;
 	if (!(!num && specs.flags & PREC_FLAG && !specs.precision))
-		print_decimal(num, len);
+		print_decimal(num, specs, len);
 }
 
 int	ft_printf_d_or_i(t_spec specs, va_list args)

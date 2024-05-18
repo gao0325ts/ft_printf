@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 09:43:05 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/16 08:21:39 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/17 22:21:06 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,18 @@ void	put_char_left(int c, t_spec specs, int *len)
 		return ;
 	}
 	(*len)++;
-	print_spaces(1, specs.width, len);
+	if (specs.flags & FLAG_ZERO)
+		print_zero_paddings(1, specs.width, len);
+	else
+		print_spaces(1, specs.width, len);
 }
 
 void	put_char_right(int c, t_spec specs, int *len)
 {
-	print_spaces(1, specs.width, len);
+	if (specs.flags & FLAG_ZERO)
+		print_zero_paddings(1, specs.width, len);
+	else
+		print_spaces(1, specs.width, len);
 	if (*len < 0)
 		return ;
 	if (write(FD, &c, 1) < 0)

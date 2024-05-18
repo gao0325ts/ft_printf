@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 20:57:59 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/16 08:21:48 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/17 22:23:34 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ void	put_percent_left(t_spec specs, int *len)
 
 void	put_percent_right(t_spec specs, int *len)
 {
-	print_spaces(1, specs.width, len);
+	if (specs.flags & FLAG_ZERO)
+		print_zero_paddings(1, specs.width, len);
+	else
+		print_spaces(1, specs.width, len);
 	if (*len < 0)
 		return ;
 	if (write(FD, "%", 1) < 0)

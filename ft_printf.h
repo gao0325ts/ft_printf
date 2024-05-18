@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 23:26:19 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/16 09:21:24 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/17 22:49:00 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,9 @@ int		ft_printf_x(t_spec specs, va_list args);
 void	put_hex_left(unsigned long long num, t_spec specs, int *len);
 void	put_hex_right_1(unsigned long long num, t_spec specs, int *len);
 void	put_hex_right_2(unsigned long long num, t_spec specs, int *len);
-void	print_decimal(int num, int *len);
+void	print_decimal(int num, t_spec specs, int *len);
 int		print_decimal_processing(long long ll);
-void	print_u_decimal(unsigned int num, int *len);
+void	print_u_decimal(unsigned int num, t_spec specs, int *len);
 int		print_u_decimal_processing(unsigned long long ll);
 void	print_hexadecimal(unsigned long long llu, t_spec specs, int *len);
 int		print_hex_upper(unsigned long long llu);
@@ -77,6 +77,7 @@ int		count_digits_u(unsigned int num, t_spec specs);
 int		count_digits_hex(unsigned long long num, t_spec specs);
 int		count_padded_len(t_spec specs, int digits, int is_minus);
 int		count_abs_digits(int num, t_spec specs);
+int		count_abs_digits_u(unsigned int num, t_spec specs);
 int		ft_printf_percent(t_spec specs);
 void	put_percent_left(t_spec specs, int *len);
 void	put_percent_left(t_spec specs, int *len);

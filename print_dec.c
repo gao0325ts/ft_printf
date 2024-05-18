@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 10:37:49 by stakada           #+#    #+#             */
-/*   Updated: 2024/05/15 21:12:47 by stakada          ###   ########.fr       */
+/*   Updated: 2024/05/17 22:52:52 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	print_decimal_processing(long long ll)
 	int		digits;
 	char	c;
 
-	digits = 1;
+	digits = 0;
 	if (ll >= 10)
 		digits += print_decimal_processing(ll / 10);
 	c = ll % 10 + '0';
@@ -26,9 +26,8 @@ int	print_decimal_processing(long long ll)
 	return (digits);
 }
 
-void	print_decimal(int num, int *len)
+void	print_decimal(int num, t_spec specs, int *len)
 {
-	int			tmp;
 	long long	ll;
 
 	ll = (long long)num;
@@ -44,13 +43,12 @@ void	print_decimal(int num, int *len)
 		(*len) += 1;
 		return ;
 	}
-	tmp = print_decimal_processing(ll);
-	if (tmp < 0)
+	if (print_decimal_processing(ll) < 0)
 	{
 		(*len) = -1;
 		return ;
 	}
-	(*len) += tmp;
+	(*len) += count_abs_digits(num, specs);
 }
 
 int	print_u_decimal_processing(unsigned long long ll)
@@ -58,7 +56,7 @@ int	print_u_decimal_processing(unsigned long long ll)
 	int		digits;
 	char	c;
 
-	digits = 1;
+	digits = 0;
 	if (ll >= 10)
 		digits += print_u_decimal_processing(ll / 10);
 	c = ll % 10 + '0';
@@ -67,9 +65,8 @@ int	print_u_decimal_processing(unsigned long long ll)
 	return (digits);
 }
 
-void	print_u_decimal(unsigned int num, int *len)
+void	print_u_decimal(unsigned int num, t_spec specs, int *len)
 {
-	int					tmp;
 	unsigned long long	llu;
 
 	llu = (unsigned long long)num;
@@ -83,11 +80,10 @@ void	print_u_decimal(unsigned int num, int *len)
 		(*len) += 1;
 		return ;
 	}
-	tmp = print_decimal_processing(llu);
-	if (tmp < 0)
+	if (print_decimal_processing(llu) < 0)
 	{
 		(*len) = -1;
 		return ;
 	}
-	(*len) += tmp;
+	(*len) += count_abs_digits_u(num, specs);
 }
