@@ -1,0 +1,11 @@
+*
+
+!libft/
+!libft/*.h
+!libft/*.c
+!libft/Makefile
+!includes/
+!includes/*.h
+!srcs/
+!srcs/*.c
+!Makefile
