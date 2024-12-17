@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 00:14:43 by stakada           #+#    #+#             */
-/*   Updated: 2024/12/17 13:38:19 by stakada          ###   ########.fr       */
+/*   Updated: 2024/12/17 14:14:55 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include "libft.h"
 
 int ft_printf(const char *fmt, ...);
+int ft_vprintf(const char *fmt, va_list ap);
 int	ft_vdprintf(int fd, const char *fmt, va_list ap);
 int	dispatcher(int fd, char cspec, va_list ap);
 int	ft_putchar(int fd, int c);
