@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 00:14:43 by stakada           #+#    #+#             */
-/*   Updated: 2024/12/17 14:21:30 by stakada          ###   ########.fr       */
+/*   Updated: 2024/12/17 14:26:33 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@
 # include <stdarg.h>
 # include <stdlib.h>
 # include <unistd.h>
+
+# define BASE_10 "0123456789"
+# define BASE_16_LOW "0123456789abcdef"
+# define BASE_16_UP "0123456789ABCDEF"
 
 int	ft_printf(const char *fmt, ...);
 int	ft_vprintf(const char *fmt, va_list ap);
