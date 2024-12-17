@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 13:04:18 by stakada           #+#    #+#             */
-/*   Updated: 2024/12/17 13:28:02 by stakada          ###   ########.fr       */
+/*   Updated: 2024/12/17 14:21:51 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 int	ft_putdec(int fd, int num)
 {
-	long long ll;
-	int len;
-	int	w_ret;
-	
+	long long	ll;
+	int			len;
+	int			w_ret;
+
 	ll = num;
 	len = 0;
 	if (num < 0)
 	{
 		ll = -ll;
 		w_ret = ft_putchar(fd, '-');
-		if (w_ret < 0)	
+		if (w_ret < 0)
 			return (-1);
 		len += w_ret;
 	}
@@ -35,9 +35,9 @@ int	ft_putdec(int fd, int num)
 	return (len);
 }
 
-int ft_putudec(int fd, unsigned int num)
+int	ft_putudec(int fd, unsigned int num)
 {
-	int len;
+	int	len;
 	int	w_ret;
 
 	len = 0;

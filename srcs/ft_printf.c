@@ -6,15 +6,15 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 00:30:30 by stakada           #+#    #+#             */
-/*   Updated: 2024/12/17 12:35:38 by stakada          ###   ########.fr       */
+/*   Updated: 2024/12/17 14:21:42 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_printf(const char *fmt, ...)
+int	ft_printf(const char *fmt, ...)
 {
-	int len;
+	int		len;
 	va_list	ap;
 
 	va_start(ap, fmt);

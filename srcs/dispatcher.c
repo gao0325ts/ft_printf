@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 12:52:09 by stakada           #+#    #+#             */
-/*   Updated: 2024/12/17 13:40:38 by stakada          ###   ########.fr       */
+/*   Updated: 2024/12/17 14:21:37 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	dispatcher(int fd, char cspec, va_list ap)
 {
-	int w_ret;
-	
+	int	w_ret;
+
 	w_ret = 0;
 	if (cspec == '%')
 		w_ret = ft_putchar(fd, '%');

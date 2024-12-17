@@ -6,7 +6,7 @@
 /*   By: stakada <stakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 12:35:50 by stakada           #+#    #+#             */
-/*   Updated: 2024/12/17 13:35:56 by stakada          ###   ########.fr       */
+/*   Updated: 2024/12/17 14:21:44 by stakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	ft_vdprintf(int fd, const char *fmt, va_list ap)
 {
-	int len;
-	int w_ret;
+	int	len;
+	int	w_ret;
 	int	i;
 
 	len = 0;
